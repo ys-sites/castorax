@@ -1,0 +1,6 @@
+{
+  "name": "Castorax Tutoring",
+  "description": "Bilingual online tutoring platform for Math, Science, and French (TEF/TCF exam prep) with interactive pricing calculator, session booking, and student contact dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
