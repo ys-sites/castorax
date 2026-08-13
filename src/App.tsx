@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ActivePage, Language } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
-import { StatsBar } from './components/StatsBar';
 import { ProgramsOverview } from './components/ProgramsOverview';
 import { MathScienceView } from './components/MathScienceView';
 import { FrenchView } from './components/FrenchView';
 import { PricingView } from './components/PricingView';
-import { StudentDashboard } from './components/StudentDashboard';
 import { Testimonials } from './components/Testimonials';
 import { ContactSection } from './components/ContactSection';
 import { FAQAccordion } from './components/FAQAccordion';
 import { BookingModal } from './components/BookingModal';
 import { translations } from './translations';
-import { MessageSquare, Sparkles } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<Language>('en');
@@ -36,37 +34,45 @@ export default function App() {
   };
 
   return (
-    <div className="min-[#100vh] flex flex-col font-sans bg-[#FDFDFD] text-slate-800 antialiased selection:bg-[#FBAD00] selection:text-[#011B4C]">
+    <div className="min-h-screen flex flex-col font-sans bg-[#F8FAFC] text-slate-800 antialiased selection:bg-[#F59E0B] selection:text-[#0F172A]">
+      {/* Top Urgency Sticky Banner */}
+      <div className="bg-[#F59E0B] text-[#0F172A] text-xs sm:text-sm font-bold py-2 px-4 text-center flex items-center justify-center gap-2 shadow-sm">
+        <span>⚡ {t.hero.banner}</span>
+        <button
+          onClick={() => handleOpenBooking('both')}
+          className="underline hover:text-black transition-colors font-extrabold cursor-pointer ml-1"
+        >
+          {t.hero.cta} →
+        </button>
+      </div>
+
       {/* Navigation Header */}
       <Navbar
         currentLang={currentLang}
         onLanguageChange={setCurrentLang}
         activePage={activePage}
         onNavigate={handleNavigate}
-        onOpenBooking={() => handleOpenBooking('math')}
+        onOpenBooking={() => handleOpenBooking('both')}
       />
 
-      {/* Main Content Area */}
+      {/* Main View Router */}
       <main className="flex-1">
         {activePage === 'home' && (
           <>
             <Hero
               currentLang={currentLang}
               onNavigate={handleNavigate}
-              onOpenBooking={() => handleOpenBooking('math')}
+              onOpenBooking={() => handleOpenBooking('both')}
             />
-            <div className="pt-16">
-              <AboutSection
-                currentLang={currentLang}
-                onNavigate={handleNavigate}
-                onOpenBooking={() => handleOpenBooking('math')}
-              />
-            </div>
-            <StatsBar currentLang={currentLang} />
             <ProgramsOverview
               currentLang={currentLang}
               onNavigate={handleNavigate}
-              onOpenBooking={() => handleOpenBooking('math')}
+              onOpenBooking={() => handleOpenBooking('both')}
+            />
+            <AboutSection
+              currentLang={currentLang}
+              onNavigate={handleNavigate}
+              onOpenBooking={() => handleOpenBooking('both')}
             />
             <Testimonials currentLang={currentLang} />
             <ContactSection currentLang={currentLang} />
@@ -81,7 +87,6 @@ export default function App() {
               onNavigate={handleNavigate}
               onOpenBooking={() => handleOpenBooking('math')}
             />
-            <ContactSection currentLang={currentLang} />
             <FAQAccordion currentLang={currentLang} />
           </>
         )}
@@ -93,7 +98,6 @@ export default function App() {
               onNavigate={handleNavigate}
               onOpenBooking={() => handleOpenBooking('french')}
             />
-            <ContactSection currentLang={currentLang} />
             <FAQAccordion currentLang={currentLang} />
           </>
         )}
@@ -105,32 +109,30 @@ export default function App() {
               onNavigate={handleNavigate}
               onOpenBooking={() => handleOpenBooking('both')}
             />
-            <Testimonials currentLang={currentLang} />
-            <ContactSection currentLang={currentLang} />
             <FAQAccordion currentLang={currentLang} />
           </>
         )}
 
-        {activePage === 'dashboard' && (
-          <StudentDashboard
-            currentLang={currentLang}
-            onNavigate={handleNavigate}
-          />
+        {activePage === 'contact' && (
+          <>
+            <ContactSection currentLang={currentLang} />
+            <FAQAccordion currentLang={currentLang} />
+          </>
         )}
       </main>
 
-      {/* Persistent Floating Quick Message Badge (Bottom Right) */}
-      <div className="fixed bottom-6 right-6 z-40 hidden sm:block">
+      {/* Floating Quick Message Trigger */}
+      <div className="fixed bottom-6 right-6 z-40">
         <button
           onClick={() => handleOpenBooking('both')}
-          className="bg-[#FBAD00] hover:bg-[#e09b00] text-[#011B4C] font-black py-3 px-5 rounded-full shadow-2xl border-2 border-[#011B4C] flex items-center gap-2 transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer"
+          className="bg-[#F59E0B] hover:bg-[#D97706] text-[#0F172A] font-black py-3 px-5 rounded-full shadow-2xl border-2 border-[#0F172A] flex items-center gap-2.5 transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer"
         >
           <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#011B4C] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#011B4C]"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0F172A] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#0F172A]"></span>
           </span>
-          <MessageSquare className="w-4 h-4" />
-          <span className="text-xs uppercase tracking-wider">{t.hero.ctaPrimary}</span>
+          <MessageSquare className="w-4 h-4 fill-[#0F172A]" />
+          <span className="text-xs uppercase tracking-wider font-extrabold">{t.hero.cta}</span>
         </button>
       </div>
 
@@ -142,7 +144,7 @@ export default function App() {
         onOpenBooking={() => handleOpenBooking('both')}
       />
 
-      {/* Booking / Quick Contact Modal */}
+      {/* Interactive Booking Modal */}
       <BookingModal
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
-import { ArrowRight, Sparkles, Award, Users, BookOpen } from 'lucide-react';
+import { Sparkles, MessageSquare, CheckCircle, ShieldCheck, Clock, Award } from 'lucide-react';
 import mascotImg from '../assets/images/castorax_mascot_logo_1786527601351.jpg';
 
 interface HeroProps {
@@ -17,187 +17,175 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   const t = translations[currentLang];
 
-  const partnerLogos = [
-    { name: 'Google', icon: 'google' },
-    { name: 'slack', icon: 'slack' },
-    { name: 'Atlassian', icon: 'atlassian' },
-    { name: 'Dropbox', icon: 'dropbox' },
-    { name: 'shopify', icon: 'shopify' },
-  ];
-
   return (
-    <div className="relative bg-[#011B4C] text-white overflow-hidden">
-      {/* Background Dim Library Image Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity pointer-events-none"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=2000&q=80')`
-        }}
-      />
-      {/* Radial Dark Gradient Overlay for Vignette effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#011B4C] via-[#011B4C]/90 to-[#011B4C]/70 pointer-events-none" />
+    <div className="relative bg-[#0F172A] text-white overflow-hidden">
+      {/* Soft Background Grid Accent */}
+      <div className="absolute inset-0 opacity-10 bg-[radial-[#F59E0B]_1px,transparent_1px] [background-size:24px_24px] pointer-events-none" />
+      
+      {/* Glow Orbs */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#F59E0B]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Main Hero Container */}
-      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-28 lg:pt-20 lg:pb-36">
+      {/* Main Hero Section */}
+      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20 lg:pt-16 lg:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Column: Hero Text & Key Stats */}
+          {/* Left Column: Core Copy */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             
-            {/* Small Eyebrow Label */}
-            <p className="text-sm font-semibold tracking-wide text-gray-300 font-sans">
-              {currentLang === 'en' ? 'Welcome to Castorax Tutoring' : 'Bienvenue chez Castorax Tutorat'}
-            </p>
+            {/* Eyebrow Pill Badge */}
+            <div className="inline-flex items-center gap-2 bg-[#F59E0B]/15 border border-[#F59E0B]/40 px-4 py-1.5 rounded-full text-[#F59E0B] text-xs sm:text-sm font-bold tracking-wide">
+              <Sparkles className="w-4 h-4 text-[#F59E0B]" />
+              <span>{t.hero.badge}</span>
+            </div>
 
-            {/* Display Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.12] tracking-tight">
-              {currentLang === 'en' ? (
-                <>
-                  Your Learning Journey <br className="hidden sm:inline" />
-                  <span className="text-white">Begins Here</span>
-                </>
-              ) : (
-                <>
-                  Votre Parcours d'Apprentissage <br className="hidden sm:inline" />
-                  <span className="text-white">Commence Ici</span>
-                </>
-              )}
+            {/* Display H1 */}
+            <h1 className="text-3xl sm:text-5xl lg:text-5xl xl:text-6xl font-black text-white leading-[1.15] tracking-tight font-sans">
+              {t.hero.title}
             </h1>
 
-            {/* Subtitle Paragraph */}
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal">
+            {/* Subtitle */}
+            <p className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
               {t.hero.subtitle}
             </p>
 
-            {/* Gold CTA Button */}
+            {/* CTA Buttons & Microcopy */}
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <button
-                onClick={() => onNavigate('math')}
-                className="w-full sm:w-auto bg-[#FBAD00] hover:bg-[#e09b00] text-[#011B4C] font-black text-base px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0"
+                onClick={onOpenBooking}
+                className="w-full sm:w-auto bg-[#F59E0B] hover:bg-[#D97706] text-[#0F172A] font-black text-base sm:text-lg px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                <span>{currentLang === 'en' ? 'Explore Our Programs' : 'Explorer nos programmes'}</span>
+                <MessageSquare className="w-5 h-5 fill-[#0F172A]" />
+                <span>{t.hero.cta}</span>
+              </button>
+
+              <button
+                onClick={() => onNavigate('pricing')}
+                className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-bold text-base px-6 py-4 rounded-xl border border-white/20 transition-all cursor-pointer text-center"
+              >
+                <span>{t.nav.pricing}</span>
               </button>
             </div>
 
-            {/* Key Hero Stats Row directly below CTA */}
-            <div className="pt-8 border-t border-white/10 grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0 text-left">
-              <div>
-                <div className="text-2xl sm:text-3xl font-black text-white font-sans">
-                  {t.eduStats.stat2Num}
-                </div>
-                <div className="text-xs font-medium text-gray-400 mt-1">
-                  {t.eduStats.stat2Label}
-                </div>
-              </div>
+            {/* Response Microcopy */}
+            <div className="flex items-center justify-center lg:justify-start gap-2 text-xs sm:text-sm text-slate-300 pt-1">
+              <Clock className="w-4 h-4 text-[#F59E0B]" />
+              <span>{t.hero.microcopy}</span>
+            </div>
 
-              <div>
-                <div className="text-2xl sm:text-3xl font-black text-white font-sans">
-                  {t.eduStats.stat1Num}
-                </div>
-                <div className="text-xs font-medium text-gray-400 mt-1">
-                  {t.eduStats.stat1Label}
-                </div>
+            {/* Highlights Grid */}
+            <div className="pt-6 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+              <div className="bg-white/5 p-3 rounded-xl border border-white/10">
+                <div className="text-xl font-black text-[#F59E0B] font-sans">{t.hero.stats.satisfaction}</div>
+                <div className="text-xs text-slate-300 font-medium">{t.hero.stats.satisfactionLabel}</div>
               </div>
-
-              <div>
-                <div className="text-2xl sm:text-3xl font-black text-white font-sans">
-                  {t.eduStats.stat4Num}
-                </div>
-                <div className="text-xs font-medium text-gray-400 mt-1">
-                  {t.eduStats.stat4Label}
-                </div>
+              <div className="bg-white/5 p-3 rounded-xl border border-white/10">
+                <div className="text-xl font-black text-[#F59E0B] font-sans">{t.hero.stats.tefPass}</div>
+                <div className="text-xs text-slate-300 font-medium">{t.hero.stats.tefPassLabel}</div>
+              </div>
+              <div className="bg-white/5 p-3 rounded-xl border border-white/10">
+                <div className="text-xl font-black text-[#F59E0B] font-sans">{t.hero.stats.format}</div>
+                <div className="text-xs text-slate-300 font-medium">{t.hero.stats.formatLabel}</div>
+              </div>
+              <div className="bg-white/5 p-3 rounded-xl border border-white/10">
+                <div className="text-xl font-black text-[#F59E0B] font-sans">{t.hero.stats.response}</div>
+                <div className="text-xs text-slate-300 font-medium">{t.hero.stats.responseLabel}</div>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Student sitting at desk with laptop */}
+          {/* Right Column: Clean Visual Mascot & Program Card Showcase */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               
-              {/* Backplate Glow Effect */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-[#FBAD00]/20 to-blue-500/20 rounded-3xl blur-2xl pointer-events-none" />
+              {/* Backplate Glow */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-[#F59E0B]/30 to-blue-600/30 rounded-3xl blur-xl pointer-events-none" />
 
-              {/* Main Photo Card */}
-              <div className="relative rounded-2xl overflow-hidden border-4 border-white/10 shadow-2xl bg-slate-900">
-                <img
-                  src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=1200&q=80"
-                  alt="Student using laptop at desk"
-                  className="w-full h-[380px] sm:h-[440px] object-cover object-top"
-                  referrerPolicy="no-referrer"
-                />
-
-                {/* Top Floating Mascot Badge */}
-                <div className="absolute top-4 left-4 bg-[#011B4C]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 shadow-xl flex items-center gap-2.5">
-                  <img
-                    src={mascotImg}
-                    alt="Castorax Mascot"
-                    className="w-8 h-8 rounded-full object-cover ring-2 ring-[#FBAD00]"
-                    referrerPolicy="no-referrer"
-                  />
+              {/* Main Card Container */}
+              <div className="relative rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl bg-[#1E293B] p-6 text-white space-y-6">
+                
+                {/* Brand Header */}
+                <div className="flex items-center gap-4 pb-4 border-b border-white/10">
+                  <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-[#F59E0B] bg-white shadow-lg shrink-0">
+                    <img
+                      src={mascotImg}
+                      alt="Castorax Beaver Mascot"
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
                   <div>
-                    <div className="text-[10px] font-black uppercase text-[#FBAD00] tracking-wider">Castorax Tutoring</div>
-                    <div className="text-xs font-semibold text-white">Math, Science & French</div>
+                    <h3 className="text-xl font-black text-white">{t.brand.name}</h3>
+                    <p className="text-xs text-[#F59E0B] font-bold">{t.brand.badge}</p>
+                    <p className="text-xs text-slate-300 mt-0.5">{t.brand.email}</p>
                   </div>
                 </div>
 
-                {/* Bottom Floating Feature Pill */}
-                <div className="absolute bottom-4 right-4 bg-[#FBAD00] text-[#011B4C] px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 text-xs font-extrabold">
-                  <Sparkles className="w-4 h-4 fill-[#011B4C]" />
-                  <span>TEF/TCF Exam Prep</span>
-                </div>
-              </div>
+                {/* Program Cards Preview */}
+                <div className="space-y-3">
+                  <div 
+                    onClick={() => onNavigate('math')}
+                    className="p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition-all cursor-pointer group"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <h4 className="text-sm font-bold text-white group-hover:text-[#F59E0B] transition-colors">
+                        {t.programs.math.title}
+                      </h4>
+                      <span className="text-xs bg-[#F59E0B]/20 text-[#F59E0B] px-2 py-0.5 rounded-full font-bold">
+                        $40 / hr
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-300 line-clamp-2">
+                      {t.programs.math.blurb}
+                    </p>
+                  </div>
 
+                  <div 
+                    onClick={() => onNavigate('french')}
+                    className="p-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition-all cursor-pointer group"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <h4 className="text-sm font-bold text-white group-hover:text-[#F59E0B] transition-colors">
+                        {t.programs.french.title}
+                      </h4>
+                      <span className="text-xs bg-[#F59E0B] text-[#0F172A] px-2 py-0.5 rounded-full font-black">
+                        TEF / TCF
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-300 line-clamp-2">
+                      {t.programs.french.blurb}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Guarantees Box */}
+                <div className="bg-[#0F172A] p-4 rounded-xl border border-[#F59E0B]/30 space-y-2">
+                  <div className="flex items-center gap-2 text-xs text-slate-200">
+                    <CheckCircle className="w-4 h-4 text-[#F59E0B] shrink-0" />
+                    <span>{currentLang === 'en' ? 'Step-by-step guidance & personalized plans' : 'Approche étape par étape et plans sur mesure'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-slate-200">
+                    <ShieldCheck className="w-4 h-4 text-[#F59E0B] shrink-0" />
+                    <span>{currentLang === 'en' ? 'Support between sessions (Email / IG DM)' : 'Soutien entre les séances (Courriel / IG DM)'}</span>
+                  </div>
+                </div>
+
+                {/* Direct Action */}
+                <button
+                  onClick={onOpenBooking}
+                  className="w-full bg-[#F59E0B] hover:bg-[#D97706] text-[#0F172A] font-black py-3 rounded-xl shadow-lg transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>{t.hero.cta}</span>
+                </button>
+
+              </div>
             </div>
           </div>
 
         </div>
       </section>
-
-      {/* Floating White Partner Banner Overlapping Hero & Section Below */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 -mb-16">
-        <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 sm:p-8 text-center text-gray-800">
-          <p className="text-xs sm:text-sm font-bold text-gray-600 uppercase tracking-wider mb-6">
-            {t.partners.title}
-          </p>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 items-center justify-items-center opacity-80 font-bold">
-            {/* Google */}
-            <div className="flex items-center gap-1 text-gray-700 font-extrabold text-lg">
-              <span className="text-blue-600">G</span>
-              <span className="text-red-500">o</span>
-              <span className="text-amber-500">o</span>
-              <span className="text-blue-600">g</span>
-              <span className="text-green-600">l</span>
-              <span className="text-red-500">e</span>
-            </div>
-
-            {/* Slack */}
-            <div className="flex items-center gap-1.5 font-black text-gray-800 tracking-tight text-lg">
-              <div className="w-4 h-4 rounded bg-[#E01E5A] flex items-center justify-center text-white text-[10px] font-bold">#</div>
-              <span>slack</span>
-            </div>
-
-            {/* Atlassian */}
-            <div className="flex items-center gap-1 font-extrabold text-gray-700 text-base">
-              <span className="text-blue-600 font-serif">▲</span>
-              <span>Atlassian</span>
-            </div>
-
-            {/* Dropbox */}
-            <div className="flex items-center gap-1.5 font-extrabold text-gray-800 text-base">
-              <div className="w-3.5 h-3.5 bg-blue-600 transform rotate-45"></div>
-              <span>Dropbox</span>
-            </div>
-
-            {/* Shopify */}
-            <div className="flex items-center gap-1 font-bold text-gray-800 text-base">
-              <span className="text-green-600 font-black">s</span>
-              <span>shopify</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
