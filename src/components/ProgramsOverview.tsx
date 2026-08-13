@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
-import { BookOpen, ArrowRight, CheckCircle2, Award, Sparkles } from 'lucide-react';
+import { BookOpen, ArrowRight, CheckCircle2, Award, Sparkles, Calculator, Check } from 'lucide-react';
 
 interface ProgramsOverviewProps {
   currentLang: Language;
