@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-[#0F172A] text-white border-t-4 border-[#F59E0B] pt-16 pb-12">
+    <footer className="bg-[#18181B] text-white border-t-4 border-[#E8631A] pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
@@ -34,18 +34,18 @@ export const Footer: React.FC<FooterProps> = ({
               <img
                 src={mascotImg}
                 alt="Castorax Logo"
-                className="w-12 h-12 rounded-full border-2 border-[#F59E0B] bg-white object-cover"
+                className="w-12 h-12 rounded-full border-2 border-[#E8631A] bg-white object-cover"
                 referrerPolicy="no-referrer"
               />
               <div>
                 <h3 className="text-xl font-black text-white font-sans">{t.brand.name}</h3>
-                <p className="text-xs text-[#F59E0B] font-semibold">{t.brand.badge}</p>
+                <p className="text-xs text-[#E8631A] font-extrabold">{t.brand.badge}</p>
               </div>
             </div>
             <p className="text-sm text-slate-300 leading-relaxed font-normal">
               {t.footer.tagline}
             </p>
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-xs text-[#F59E0B]">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-xs text-[#E8631A]">
               <Clock className="w-3.5 h-3.5" />
               <span>{t.footer.reply}</span>
             </div>
@@ -53,14 +53,14 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 2: Navigation Links */}
           <div className="space-y-3">
-            <h4 className="text-[#F59E0B] font-bold text-sm uppercase tracking-wider font-sans">
+            <h4 className="text-[#E8631A] font-bold text-sm uppercase tracking-wider font-sans">
               {t.footer.navTitle}
             </h4>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <button
                   onClick={() => onNavigate('home')}
-                  className="hover:text-[#F59E0B] transition-colors cursor-pointer"
+                  className="hover:text-[#E8631A] transition-colors cursor-pointer"
                 >
                   {t.nav.home}
                 </button>
@@ -68,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('math')}
-                  className="hover:text-[#F59E0B] transition-colors cursor-pointer"
+                  className="hover:text-[#E8631A] transition-colors cursor-pointer"
                 >
                   {t.nav.math}
                 </button>
@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('french')}
-                  className="hover:text-[#F59E0B] transition-colors cursor-pointer"
+                  className="hover:text-[#E8631A] transition-colors cursor-pointer"
                 >
                   {t.nav.french}
                 </button>
@@ -84,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('pricing')}
-                  className="hover:text-[#F59E0B] transition-colors cursor-pointer"
+                  className="hover:text-[#E8631A] transition-colors cursor-pointer"
                 >
                   {t.nav.pricing}
                 </button>
@@ -94,15 +94,15 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 3: Direct Contact */}
           <div className="space-y-3">
-            <h4 className="text-[#F59E0B] font-bold text-sm uppercase tracking-wider font-sans">
+            <h4 className="text-[#E8631A] font-bold text-sm uppercase tracking-wider font-sans">
               {t.footer.contactTitle}
             </h4>
             <div className="space-y-2.5 text-sm">
               <a
                 href={`mailto:${t.footer.email}`}
-                className="flex items-center gap-2.5 text-slate-200 hover:text-[#F59E0B] transition-colors"
+                className="flex items-center gap-2.5 text-slate-200 hover:text-[#E8631A] transition-colors"
               >
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#F59E0B]">
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#E8631A]">
                   <Mail className="w-4 h-4" />
                 </div>
                 <span className="truncate">{t.footer.email}</span>
@@ -112,9 +112,9 @@ export const Footer: React.FC<FooterProps> = ({
                 href="https://instagram.com/castoraxtutoring"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-slate-200 hover:text-[#F59E0B] transition-colors"
+                className="flex items-center gap-2.5 text-slate-200 hover:text-[#E8631A] transition-colors"
               >
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#F59E0B]">
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#E8631A]">
                   <Instagram className="w-4 h-4" />
                 </div>
                 <span>Instagram: {t.footer.instagram}</span>
@@ -123,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({
               <div className="pt-2">
                 <button
                   onClick={onOpenBooking}
-                  className="w-full bg-[#F59E0B] hover:bg-[#D97706] text-[#0F172A] font-bold py-2.5 px-3 rounded-lg text-xs transition-colors shadow cursor-pointer"
+                  className="w-full bg-[#E8631A] hover:bg-[#D9480F] text-white font-bold py-2.5 px-3 rounded-lg text-xs transition-colors shadow cursor-pointer"
                 >
                   {t.hero.cta}
                 </button>
@@ -133,25 +133,25 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 4: Trust & Language */}
           <div className="space-y-3">
-            <h4 className="text-[#F59E0B] font-bold text-sm uppercase tracking-wider font-sans">
+            <h4 className="text-[#E8631A] font-bold text-sm uppercase tracking-wider font-sans">
               {currentLang === 'en' ? 'Language & Guarantee' : 'Langue & Engagement'}
             </h4>
             <div className="bg-white/5 border border-white/10 p-4 rounded-xl space-y-3 text-xs text-slate-300">
               <div className="flex items-center gap-2 font-bold text-white">
-                <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
+                <ShieldCheck className="w-4 h-4 text-[#E8631A]" />
                 <span>{currentLang === 'en' ? '100% Online & Flexible' : '100% En ligne & Flexible'}</span>
               </div>
               <p>
                 {t.pricing.finePrint}
               </p>
               <div className="pt-2 border-t border-white/10 flex items-center gap-2">
-                <Globe className="w-3.5 h-3.5 text-[#F59E0B]" />
+                <Globe className="w-3.5 h-3.5 text-[#E8631A]" />
                 <span className="text-slate-400">
                   {currentLang === 'en' ? 'Switch Language:' : 'Changer la langue :'}
                 </span>
                 <button
                   onClick={() => onLanguageChange(currentLang === 'en' ? 'fr' : 'en')}
-                  className="font-bold text-[#F59E0B] underline cursor-pointer"
+                  className="font-bold text-[#E8631A] underline cursor-pointer"
                 >
                   {currentLang === 'en' ? 'Français (FR)' : 'English (EN)'}
                 </button>
@@ -166,12 +166,12 @@ export const Footer: React.FC<FooterProps> = ({
           <p>© {new Date().getFullYear()} {t.brand.name}. {t.footer.rights}</p>
           <div className="flex items-center gap-2">
             <span>{currentLang === 'en' ? 'Designed for' : 'Conçu pour'}</span>
-            <Heart className="w-3.5 h-3.5 text-[#F59E0B] fill-[#F59E0B]" />
+            <Heart className="w-3.5 h-3.5 text-[#E8631A] fill-[#E8631A]" />
             <span>{currentLang === 'en' ? 'student confidence & success' : 'la confiance et la réussite'}</span>
           </div>
           <button
             onClick={scrollToTop}
-            className="p-2 bg-white/10 hover:bg-[#F59E0B] hover:text-[#0F172A] rounded-full transition-colors cursor-pointer"
+            className="p-2 bg-white/10 hover:bg-[#E8631A] hover:text-white rounded-full transition-colors cursor-pointer"
             aria-label="Back to top"
           >
             <ArrowUp className="w-4 h-4" />
