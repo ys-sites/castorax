@@ -38,25 +38,25 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
   const currentStory = stories[activeIdx];
 
   return (
-    <section className="py-20 bg-[#FAF9F5] relative">
+    <section className="py-20 bg-[#F8FAFC] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-          <span className="text-xs font-black tracking-widest text-[#E8631A] uppercase bg-[#FFF0E5] px-4 py-1.5 rounded-full border border-[#FDBA74]/40 font-sans">
+          <span className="text-xs font-black tracking-widest text-[#011B4C] uppercase bg-[#FEF3C7] px-4 py-1.5 rounded-full border border-[#FCD34D] font-sans">
             {currentLang === 'en' ? 'Student Results' : 'Résultats des élèves'}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#1E1B18] tracking-tight font-sans">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#011B4C] tracking-tight font-sans">
             {currentLang === 'en' ? 'Real Stories of Progress & Success' : 'Des progrès et des succès concrets'}
           </h2>
         </div>
 
         {/* Testimonial Card */}
-        <div className="bg-[#18181B] text-white p-8 sm:p-12 rounded-3xl shadow-2xl border-2 border-[#E8631A] max-w-3xl mx-auto relative space-y-6">
-          <Quote className="w-12 h-12 text-[#E8631A]/30 absolute top-6 right-6 pointer-events-none" />
+        <div className="bg-[#011B4C] text-white p-8 sm:p-12 rounded-3xl shadow-2xl border-2 border-[#FBAD00] max-w-3xl mx-auto relative space-y-6">
+          <Quote className="w-12 h-12 text-[#FBAD00]/30 absolute top-6 right-6 pointer-events-none" />
 
           {/* Stars */}
-          <div className="flex text-[#E8631A] text-lg">
+          <div className="flex text-[#FBAD00] text-lg">
             {'★'.repeat(5)}
           </div>
 
@@ -69,20 +69,20 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
           <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-4">
             <div>
               <h3 className="text-lg font-black text-white font-sans">{currentStory.name}</h3>
-              <p className="text-xs text-[#E8631A] font-bold">{currentStory.role} · <span className="underline">{currentStory.badge}</span></p>
+              <p className="text-xs text-[#FBAD00] font-bold">{currentStory.role} · <span className="underline">{currentStory.badge}</span></p>
             </div>
 
             {/* Navigation Arrows */}
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setActiveIdx((prev) => (prev === 0 ? stories.length - 1 : prev - 1))}
-                className="w-10 h-10 rounded-full border border-white/20 hover:bg-[#E8631A] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-full border border-white/20 hover:bg-[#FBAD00] hover:text-[#011B4C] flex items-center justify-center transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={() => setActiveIdx((prev) => (prev === stories.length - 1 ? 0 : prev + 1))}
-                className="w-10 h-10 rounded-full border border-white/20 hover:bg-[#E8631A] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                className="w-10 h-10 rounded-full border border-white/20 hover:bg-[#FBAD00] hover:text-[#011B4C] flex items-center justify-center transition-colors cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>

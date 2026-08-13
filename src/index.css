@@ -4,16 +4,17 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
 
-  --color-brand-orange: #E8631A;
-  --color-brand-orange-hover: #D9480F;
-  --color-brand-orange-light: #FFF0E5;
-  --color-brand-orange-border: #FDBA74;
+  --color-brand-navy: #011B4C;
+  --color-brand-navy-dark: #0A192F;
+  --color-brand-navy-light: #1E293B;
 
-  --color-dark-charcoal: #1E1B18;
-  --color-dark-surface: #18181B;
+  --color-brand-gold: #FBAD00;
+  --color-brand-gold-hover: #E09B00;
+  --color-brand-gold-light: #FEF3C7;
+  --color-brand-gold-border: #FCD34D;
 
-  --color-surface-cream: #FFF9F5;
-  --color-surface-hero: #FFF5ED;
+  --color-surface-offwhite: #F8FAFC;
+  --color-surface-card: #FFFFFF;
 }
 
 @layer utilities {
@@ -36,19 +37,18 @@
 }
 
 :root {
-  --orange: #E8631A;
-  --orange-hover: #D9480F;
-  --orange-light: #FFF0E5;
-  --dark: #1E1B18;
-  --dark-surface: #18181B;
-  --bg-cream: #FFF9F5;
-  --bg-light: #FAFAFC;
-  --border-light: #F3E8E0;
+  --navy: #011B4C;
+  --navy-dark: #0A192F;
+  --gold: #FBAD00;
+  --gold-hover: #E09B00;
+  --gold-light: #FEF3C7;
+  --bg-offwhite: #F8FAFC;
+  --border-light: #E2E8F0;
 }
 
 body {
-  background-color: var(--bg-light);
-  color: #1E1B18;
+  background-color: var(--bg-offwhite);
+  color: #0A192F;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -64,14 +64,14 @@ h1, h2, h3, h4, .font-heading {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #fdf5f0;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #fdba74;
+  background: #fcd34d;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e8631a;
+  background: #fbad00;
 }
 
 
