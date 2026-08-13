@@ -3,17 +3,18 @@
 @theme {
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-academic: 'Playfair Display', Georgia, serif;
 
-  --color-brand-navy: #011B4C;
-  --color-brand-navy-dark: #0A192F;
-  --color-brand-navy-light: #1E293B;
+  --color-brand-navy: #0B1B36;
+  --color-brand-navy-dark: #071224;
+  --color-brand-navy-light: #162B4D;
 
-  --color-brand-gold: #FBAD00;
-  --color-brand-gold-hover: #E09B00;
-  --color-brand-gold-light: #FEF3C7;
-  --color-brand-gold-border: #FCD34D;
+  --color-brand-gold: #C58B1B;
+  --color-brand-gold-hover: #A77312;
+  --color-brand-gold-light: #FAF3E3;
+  --color-brand-gold-border: #E8CA8A;
 
-  --color-surface-offwhite: #F8FAFC;
+  --color-surface-offwhite: #FAFAFB;
   --color-surface-card: #FFFFFF;
 }
 
@@ -34,21 +35,25 @@
   .font-display {
     font-family: var(--font-display);
   }
+
+  .font-serif-academic {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
 }
 
 :root {
-  --navy: #011B4C;
-  --navy-dark: #0A192F;
-  --gold: #FBAD00;
-  --gold-hover: #E09B00;
-  --gold-light: #FEF3C7;
-  --bg-offwhite: #F8FAFC;
+  --navy: #0B1B36;
+  --navy-dark: #071224;
+  --gold: #C58B1B;
+  --gold-hover: #A77312;
+  --gold-light: #FAF3E3;
+  --bg-offwhite: #FAFAFB;
   --border-light: #E2E8F0;
 }
 
 body {
   background-color: var(--bg-offwhite);
-  color: #0A192F;
+  color: #071224;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
