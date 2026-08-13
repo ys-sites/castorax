@@ -40,9 +40,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-2xl font-black text-[#1E1B18] font-sans">{t.aboutPage.title}</h3>
+                  <h3 className="text-2xl font-black text-[#1E1B18] font-sans">{t.brand.name}</h3>
                   <p className="text-xs text-[#E8631A] font-extrabold tracking-wider uppercase">
-                    {t.aboutPage.badge}
+                    {t.brand.badge}
                   </p>
                 </div>
 
@@ -55,13 +55,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 {/* 3 Pillars Quick Badges */}
                 <div className="grid grid-cols-3 gap-2 pt-2 text-center text-xs">
                   <div className="bg-[#FFF0E5] p-2.5 rounded-xl border border-orange-200/60 font-bold text-[#1E1B18]">
-                    {t.aboutPage.pillars.p1}
+                    {currentLang === 'en' ? 'Personalized' : 'Sur Mesure'}
                   </div>
                   <div className="bg-[#FFF0E5] p-2.5 rounded-xl border border-orange-200/60 font-bold text-[#1E1B18]">
-                    {t.aboutPage.pillars.p2}
+                    {currentLang === 'en' ? 'Flexible' : 'Flexible'}
                   </div>
                   <div className="bg-[#FFF0E5] p-2.5 rounded-xl border border-orange-200/60 font-bold text-[#1E1B18]">
-                    {t.aboutPage.pillars.p3}
+                    {currentLang === 'en' ? 'Effective' : 'Efficace'}
                   </div>
                 </div>
               </div>
@@ -73,7 +73,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="space-y-2">
               <span className="text-xs font-black tracking-widest text-[#E8631A] uppercase bg-[#FFF0E5] px-4 py-1.5 rounded-full border border-[#FDBA74]/40 font-sans">
-                {t.aboutPage.badge}
+                {t.aboutUs.eyebrow}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-[#1E1B18] tracking-tight font-sans">
                 {t.aboutUs.title}
@@ -81,7 +81,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
             </div>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              {t.aboutUs.subtitle}
+              {t.aboutUs.desc}
             </p>
 
             {/* Bullet Points */}
@@ -132,4 +132,3 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     </section>
   );
 };
-
