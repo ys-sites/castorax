@@ -27,10 +27,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         {/* Founder Bio & Video Reel Block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left: Reel Video Player */}
+          {/* Left: Reel Video Player (Zero Tint, Natural Video & Colors) */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-sm lg:max-w-none">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-300 bg-[#011B4C] aspect-[9/16] max-h-[560px] mx-auto">
+              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-300 bg-slate-900 aspect-[9/16] max-h-[560px] mx-auto">
                 <video
                   src="/castorax_intro.mp4"
                   controls
@@ -41,15 +41,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                   className="w-full h-full object-cover"
                   poster={founderPhoto}
                 />
-                
-                <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-[#011B4C] via-[#011B4C]/60 to-transparent text-white pointer-events-none">
-                  <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#FBAD00] mb-0.5">
-                    CASTORAX REEL
-                  </div>
-                  <div className="text-sm font-display font-bold">
-                    Why Castorax Tutoring Exists
-                  </div>
-                </div>
               </div>
 
               {/* Instagram Reel Link */}
