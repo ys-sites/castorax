@@ -1,8 +1,8 @@
 import React from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
-import { Check, ArrowRight, Play, Sparkles, BookOpen, Compass, Award, ShieldCheck } from 'lucide-react';
-import mascotImg from '../assets/images/castorax_mascot_logo_1786527601351.jpg';
+import { FoundationDivider } from './FoundationDivider';
+import heroPhoto from '../assets/images/hero_tutoring_banner_1786527612169.jpg';
 
 interface AboutSectionProps {
   currentLang: Language;
@@ -16,116 +16,120 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   onOpenBooking,
 }) => {
   const t = translations[currentLang];
+  const founder = t.aboutFounder;
+  const how = t.howItWorks;
 
   return (
-    <section className="py-20 bg-[#FAFAFB] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-[#FAF6EC] relative border-t border-[#011B4C]/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
         
+        {/* Founder Bio Block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Left Feature Showcase Card */}
+          {/* Left: Founder Portrait Placeholder Frame (Duotone Navy) */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
-              
-              <div className="relative bg-[#0B1B36] text-white p-8 rounded-2xl border-2 border-[#C58B1B]/40 shadow-2xl space-y-6 overflow-hidden">
-                <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-[#C58B1B] bg-white p-0.5 shadow-md">
-                  <img
-                    src={mascotImg}
-                    alt="Castorax Tutor Mascot"
-                    className="w-full h-full object-cover rounded-full"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-
-                <div className="text-center space-y-1">
-                  <h3 className="text-2xl font-serif-academic font-bold text-white">{t.brand.name}</h3>
-                  <p className="text-xs text-[#E8CA8A] font-extrabold uppercase tracking-widest">
-                    {t.brand.badge}
-                  </p>
-                </div>
-
-                <blockquote className="italic text-slate-300 text-xs sm:text-sm leading-relaxed border-l-2 border-[#C58B1B] pl-4">
-                  "{currentLang === 'en' 
-                    ? 'Learning is not about memorization; it is about building deep understanding and real confidence step by step.' 
-                    : 'L\'apprentissage ne consiste pas à mémoriser, mais à bâtir une compréhension profonde et une confiance réelle étape par étape.'}"
-                </blockquote>
-
-                <div className="pt-2 text-center">
-                  <button
-                    onClick={onOpenBooking}
-                    className="w-full bg-[#C58B1B] hover:bg-[#A77312] text-white font-extrabold text-xs uppercase tracking-wider py-3 rounded-lg shadow cursor-pointer transition-colors"
-                  >
-                    {currentLang === 'en' ? 'EXPLORE METHODOLOGY →' : 'EXPLORER LA MÉTHODE →'}
-                  </button>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-[#011B4C]/15 bg-[#011B4C] aspect-[4/5]">
+                <img
+                  src={heroPhoto}
+                  alt="Burhan - Founder & Lead Tutor"
+                  className="w-full h-full object-cover mix-blend-luminosity opacity-85"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#011B4C] via-[#011B4C]/40 to-transparent pointer-events-none" />
+                
+                <div className="absolute bottom-0 inset-x-0 p-6 text-[#FAF6EC]">
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#FBAD00] mb-1">
+                    FOUNDER & LEAD TUTOR
+                  </div>
+                  <div className="text-xl font-display font-bold">
+                    Burhan
+                  </div>
+                  <div className="text-xs text-[#FAF6EC]/80 font-sans mt-0.5">
+                    Math, Science & French Tutoring Specialist
+                  </div>
                 </div>
               </div>
-
             </div>
           </div>
 
-          {/* Right Core Methodology Text & 4-Grid Cards */}
+          {/* Right: Founder Story & Pitch */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="space-y-2">
-              <span className="text-xs font-black tracking-widest text-[#C58B1B] uppercase font-sans">
-                {t.aboutUs.eyebrow}
+              <span className="text-xs font-bold uppercase tracking-widest text-[#011B4C]/70 font-sans">
+                {founder.eyebrow}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-serif-academic font-bold text-[#0B1B36] leading-tight">
-                {currentLang === 'en' ? 'More Than Tutoring, It\'s an Experience' : 'Plus que du tutorat, une vraie expérience'}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#011B4C]">
+                {founder.title}
               </h2>
             </div>
 
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-              {t.aboutUs.desc}
+            <p className="text-base text-[#1E2A44] leading-relaxed font-sans">
+              {founder.desc}
             </p>
 
-            {/* 4 Feature Grid Cards (2x2 matching Northfield design) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              
-              <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
-                <div className="w-9 h-9 rounded-lg bg-[#FAF3E3] border border-[#E8CA8A] text-[#C58B1B] flex items-center justify-center">
-                  <Award className="w-5 h-5" />
-                </div>
-                <h4 className="text-sm font-bold text-[#0B1B36] font-sans">Personalized Pace</h4>
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                  {t.aboutUs.point1}
-                </p>
-              </div>
+            <blockquote className="p-4 bg-[#F1E9D8] border-l-4 border-[#011B4C] text-sm text-[#011B4C] font-display italic rounded-r-lg leading-relaxed">
+              "{founder.supporting}"
+            </blockquote>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
-                <div className="w-9 h-9 rounded-lg bg-[#FAF3E3] border border-[#E8CA8A] text-[#C58B1B] flex items-center justify-center">
-                  <Compass className="w-5 h-5" />
-                </div>
-                <h4 className="text-sm font-bold text-[#0B1B36] font-sans">Exam & Immigration Ready</h4>
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                  {t.aboutUs.point2}
-                </p>
-              </div>
+            {/* Core Pillars List */}
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {founder.pillars.map((pillar, idx) => (
+                <li key={idx} className="flex items-center gap-2 text-xs font-bold text-[#011B4C] font-sans">
+                  <span className="w-2 h-2 rounded-full bg-[#FBAD00] shrink-0" />
+                  <span>{pillar}</span>
+                </li>
+              ))}
+            </ul>
 
-              <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
-                <div className="w-9 h-9 rounded-lg bg-[#FAF3E3] border border-[#E8CA8A] text-[#C58B1B] flex items-center justify-center">
-                  <BookOpen className="w-5 h-5" />
-                </div>
-                <h4 className="text-sm font-bold text-[#0B1B36] font-sans">Between-Session Support</h4>
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                  {t.aboutUs.point3}
-                </p>
-              </div>
-
-              <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
-                <div className="w-9 h-9 rounded-lg bg-[#FAF3E3] border border-[#E8CA8A] text-[#C58B1B] flex items-center justify-center">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
-                <h4 className="text-sm font-bold text-[#0B1B36] font-sans">Proven System</h4>
-                <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                  Clear step-by-step progress tracking for parents & students.
-                </p>
-              </div>
-
+            <div className="pt-2">
+              <button
+                onClick={onOpenBooking}
+                className="bg-[#011B4C] hover:bg-[#1E2A44] text-[#FAF6EC] font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow cursor-pointer transition-colors"
+              >
+                {t.hero.cta}
+              </button>
             </div>
-
           </div>
 
         </div>
+
+        {/* Foundation Divider */}
+        <FoundationDivider align="center" />
+
+        {/* Numbered "How Sessions Work" Sequence Section */}
+        <div className="space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#011B4C]/70 font-sans">
+              {how.eyebrow}
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#011B4C]">
+              {how.title}
+            </h2>
+          </div>
+
+          {/* 4-Step Numbered Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {how.steps.map((step, idx) => (
+              <div
+                key={idx}
+                className="bg-[#F1E9D8] border border-[#011B4C]/15 rounded-2xl p-6 shadow-sm flex flex-col justify-between space-y-4 hover:border-[#011B4C]/40 transition-all"
+              >
+                <div className="space-y-3">
+                  <span className="text-3xl font-mono font-extrabold text-[#011B4C] block">
+                    {step.num}
+                  </span>
+                  <h3 className="text-lg font-display font-bold text-[#011B4C]">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#1E2A44] leading-relaxed font-sans">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

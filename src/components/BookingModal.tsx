@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { translations } from '../translations';
-import { X, Send, CheckCircle2, Clock, Mail, Instagram, Sparkles, Copy, Check } from 'lucide-react';
+import { X, Send, CheckCircle2, Clock, Instagram, Copy, Check } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface BookingModalProps {
@@ -37,7 +37,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         particleCount: 70,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#0F172A', '#F59E0B', '#10B981'],
+        colors: ['#011B4C', '#FBAD00', '#F1E9D8'],
       });
     } catch {
       // ignore
@@ -56,60 +56,59 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-[#FBAD00]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#011B4C]/75 backdrop-blur-sm animate-fadeIn">
+      <div className="relative w-full max-w-lg bg-[#FAF6EC] rounded-2xl shadow-2xl overflow-hidden border border-[#011B4C]/20">
         
         {/* Header */}
-        <div className="bg-[#011B4C] text-white p-6 relative border-b border-[#FBAD00]/30">
+        <div className="bg-[#011B4C] text-[#FAF6EC] p-6 relative border-b border-[#011B4C]">
           <button
             onClick={resetAndClose}
-            className="absolute top-4 right-4 text-slate-300 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-colors cursor-pointer"
+            className="absolute top-4 right-4 text-[#FAF6EC]/80 hover:text-white p-1.5 rounded-lg hover:bg-[#FAF6EC]/10 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="flex items-center gap-2 text-[#FBAD00] text-xs font-bold uppercase tracking-wider mb-1 font-sans">
-            <Sparkles className="w-4 h-4" />
-            <span>Castorax Tutoring</span>
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#FBAD00] mb-1">
+            Castorax Tutoring
           </div>
-          <h3 className="text-xl font-black text-white font-sans">{t.bookingModal.title}</h3>
-          <p className="text-xs text-slate-300 mt-1 flex items-center gap-1.5 font-normal">
+          <h3 className="text-xl font-display font-bold text-[#FAF6EC]">{t.bookingModal.title}</h3>
+          <p className="text-xs text-[#FAF6EC]/80 mt-1 flex items-center gap-1.5 font-sans">
             <Clock className="w-3.5 h-3.5 text-[#FBAD00]" />
             <span>{t.bookingModal.responseTimeNote}</span>
           </p>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 font-sans">
           {submitted ? (
             <div className="text-center py-6 space-y-4">
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
-                <CheckCircle2 className="w-10 h-10" />
+              <div className="w-14 h-14 bg-[#011B4C] text-[#FBAD00] rounded-full flex items-center justify-center mx-auto shadow">
+                <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h4 className="text-2xl font-black text-[#011B4C] font-sans">
+              <h4 className="text-2xl font-display font-bold text-[#011B4C]">
                 {currentLang === 'en' ? 'Message Received!' : 'Message reçu !'}
               </h4>
-              <p className="text-sm text-slate-600 max-w-sm mx-auto">
+              <p className="text-sm text-[#1E2A44] max-w-sm mx-auto">
                 {currentLang === 'en'
                   ? 'Thank you! I usually reply within 24 hours on email or Instagram.'
                   : 'Merci ! Je réponds généralement dans les 24 heures par courriel ou Instagram.'}
               </p>
               
               {/* Direct links container */}
-              <div className="bg-[#F8FAFC] border border-slate-200 p-4 rounded-2xl text-xs space-y-2 text-slate-800">
-                <p className="font-bold text-[#011B4C]">Direct Contact Options:</p>
+              <div className="bg-[#F1E9D8] border border-[#011B4C]/15 p-4 rounded-xl text-xs space-y-2 text-[#011B4C]">
+                <p className="font-bold">Direct Contact Options:</p>
                 <div className="flex flex-col gap-2">
                   <a
                     href="https://instagram.com/castoraxtutoring"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-center gap-2 bg-[#FBAD00] hover:bg-[#E09B00] text-[#011B4C] font-black py-2 px-4 rounded-xl shadow cursor-pointer text-center"
+                    className="flex items-center justify-center gap-2 bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] font-bold py-2 px-4 rounded-lg shadow cursor-pointer text-center"
                   >
                     <Instagram className="w-4 h-4" />
                     <span>{t.bookingModal.instagramCTA}</span>
                   </a>
                   <button
                     onClick={handleCopyEmail}
-                    className="flex items-center justify-center gap-2 bg-[#011B4C] text-white font-bold py-2 px-4 rounded-xl cursor-pointer hover:bg-[#011B4C]/90"
+                    className="flex items-center justify-center gap-2 bg-[#011B4C] text-[#FAF6EC] font-bold py-2 px-4 rounded-lg cursor-pointer hover:bg-[#1E2A44]"
                   >
                     {copied ? <Check className="w-4 h-4 text-[#FBAD00]" /> : <Copy className="w-4 h-4" />}
                     <span>{copied ? t.bookingModal.copiedNotice : t.bookingModal.copyEmail}</span>
@@ -119,7 +118,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               <button
                 onClick={resetAndClose}
-                className="w-full bg-[#FBAD00] text-[#011B4C] font-black py-3 rounded-xl hover:bg-[#E09B00] transition-colors shadow cursor-pointer"
+                className="w-full bg-[#011B4C] text-[#FAF6EC] font-bold py-3 rounded-lg hover:bg-[#1E2A44] transition-colors shadow cursor-pointer uppercase text-xs tracking-wider"
               >
                 {currentLang === 'en' ? 'Close Window' : 'Fermer la fenêtre'}
               </button>
@@ -127,7 +126,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-[#011B4C] uppercase tracking-wider mb-1">
+                <label className="block text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider mb-1">
                   {t.bookingModal.fullName} *
                 </label>
                 <input
@@ -136,12 +135,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder={currentLang === 'en' ? 'e.g., Alex Johnson' : 'ex., Alex Johnson'}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#FBAD00] text-sm"
+                  className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#F1E9D8] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#011B4C] uppercase tracking-wider mb-1">
+                <label className="block text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider mb-1">
                   {t.bookingModal.email} *
                 </label>
                 <input
@@ -150,18 +149,18 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="alex@example.com"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#FBAD00] text-sm"
+                  className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#F1E9D8] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#011B4C] uppercase tracking-wider mb-1">
+                <label className="block text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider mb-1">
                   {t.bookingModal.programSelect}
                 </label>
                 <select
                   value={form.program}
                   onChange={(e) => setForm({ ...form, program: e.target.value as any })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#FBAD00] text-sm bg-white font-medium"
+                  className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#F1E9D8] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm font-medium"
                 >
                   <option value="math">{t.bookingModal.programMath}</option>
                   <option value="french">{t.bookingModal.programFrench}</option>
@@ -170,7 +169,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#011B4C] uppercase tracking-wider mb-1">
+                <label className="block text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider mb-1">
                   {t.bookingModal.message}
                 </label>
                 <textarea
@@ -179,21 +178,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder={currentLang === 'en' ? 'Tell me about your grade level, exam goals, or timeline...' : 'Parlez-moi de votre niveau, vos objectifs d\'examen ou échéances...'}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#FBAD00] text-sm"
+                  className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#F1E9D8] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                 />
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full bg-[#FBAD00] hover:bg-[#E09B00] text-[#011B4C] font-black py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
+                  className="w-full bg-[#011B4C] hover:bg-[#1E2A44] text-[#FBAD00] font-bold py-3.5 rounded-lg shadow transition-all flex items-center justify-center gap-2 cursor-pointer text-xs uppercase tracking-wider"
                 >
-                  <Send className="w-4 h-4 fill-[#011B4C]" />
-                  <span>{t.bookingModal.submitCTA}</span>
+                  <Send className="w-4 h-4" />
+                  <span>{t.bookingModal.sendEmailCTA || t.hero.cta}</span>
                 </button>
               </div>
 
-              <div className="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-slate-200">
+              <div className="flex items-center justify-between text-[11px] text-[#1E2A44]/80 pt-2 border-t border-[#011B4C]/15 font-mono">
                 <button
                   type="button"
                   onClick={handleCopyEmail}

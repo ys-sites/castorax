@@ -1,67 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-academic: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Public Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
 
-  --color-brand-navy: #0B1B36;
-  --color-brand-navy-dark: #071224;
-  --color-brand-navy-light: #162B4D;
-
-  --color-brand-gold: #C58B1B;
-  --color-brand-gold-hover: #A77312;
-  --color-brand-gold-light: #FAF3E3;
-  --color-brand-gold-border: #E8CA8A;
-
-  --color-surface-offwhite: #FAFAFB;
-  --color-surface-card: #FFFFFF;
+  --color-ink: #011B4C;
+  --color-ink-soft: #1E2A44;
+  --color-gold: #FBAD00;
+  --color-paper: #FAF6EC;
+  --color-paper-deep: #F1E9D8;
+  --color-rule: rgba(1, 27, 76, 0.14);
 }
 
 @layer utilities {
-  @keyframes shiny {
-    0% {
-      background-position: 200% 0;
-    }
-    100% {
-      background-position: -200% 0;
-    }
-  }
-
-  .animate-shiny {
-    animation: shiny 3s infinite linear;
-  }
-
   .font-display {
-    font-family: var(--font-display);
+    font-family: 'Fraunces', Georgia, serif;
   }
 
-  .font-serif-academic {
-    font-family: 'Playfair Display', Georgia, serif;
+  .font-sans-body {
+    font-family: 'Public Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  .font-mono-data {
+    font-family: 'IBM Plex Mono', monospace;
   }
 }
 
 :root {
-  --navy: #0B1B36;
-  --navy-dark: #071224;
-  --gold: #C58B1B;
-  --gold-hover: #A77312;
-  --gold-light: #FAF3E3;
-  --bg-offwhite: #FAFAFB;
-  --border-light: #E2E8F0;
+  --ink: #011B4C;
+  --ink-soft: #1E2A44;
+  --gold: #FBAD00;
+  --paper: #FAF6EC;
+  --paper-deep: #F1E9D8;
+  --rule: rgba(1, 27, 76, 0.14);
 }
 
 body {
-  background-color: var(--bg-offwhite);
-  color: #071224;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--paper);
+  color: var(--ink-soft);
+  font-family: 'Public Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, .font-heading {
-  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Fraunces', Georgia, serif;
 }
 
 /* Custom scrollbar */
@@ -69,14 +54,15 @@ h1, h2, h3, h4, .font-heading {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #F1E9D8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #fcd34d;
+  background: #FBAD00;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #fbad00;
+  background: #d49300;
 }
+
 
 

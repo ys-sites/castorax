@@ -34,13 +34,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-[#F8FAFC] text-[#0A192F] antialiased selection:bg-[#FBAD00] selection:text-[#011B4C]">
-      {/* Top Urgency Sticky Banner */}
-      <div className="bg-[#011B4C] text-[#FBAD00] text-xs sm:text-sm font-bold py-2 px-4 text-center flex items-center justify-center gap-2 shadow-sm border-b border-white/10">
+    <div className="min-h-screen flex flex-col font-sans bg-[#FAF6EC] text-[#1E2A44] antialiased selection:bg-[#FBAD00] selection:text-[#011B4C]">
+      {/* Top Sticky Banner */}
+      <div className="bg-[#011B4C] text-[#FBAD00] text-xs font-bold py-2 px-4 text-center flex items-center justify-center gap-2 shadow-sm border-b border-[#FAF6EC]/10 font-sans">
         <span>⚡ {t.hero.banner}</span>
         <button
           onClick={() => handleOpenBooking('both')}
-          className="underline hover:text-white transition-colors font-extrabold cursor-pointer ml-1 text-white"
+          className="underline hover:text-white transition-colors font-bold cursor-pointer ml-1 text-[#FAF6EC]"
         >
           {t.hero.cta} →
         </button>
@@ -121,18 +121,14 @@ export default function App() {
         )}
       </main>
 
-      {/* Floating Quick Message Trigger */}
+      {/* Floating Sticky CTA Button (Static, subtle, non-pulsing) */}
       <div className="fixed bottom-6 right-6 z-40">
         <button
           onClick={() => handleOpenBooking('both')}
-          className="bg-[#FBAD00] hover:bg-[#E09B00] text-[#011B4C] font-black py-3.5 px-6 rounded-full shadow-2xl border-2 border-white flex items-center gap-2.5 transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer"
+          className="bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] font-bold py-3 px-5 rounded-full shadow-xl border border-[#011B4C]/20 flex items-center gap-2.5 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
         >
-          <span className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#011B4C] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#011B4C]"></span>
-          </span>
           <MessageSquare className="w-4 h-4 fill-[#011B4C]" />
-          <span className="text-xs uppercase tracking-wider font-black">{t.hero.cta}</span>
+          <span className="text-xs uppercase tracking-wider font-bold">{t.hero.cta}</span>
         </button>
       </div>
 

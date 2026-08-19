@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
-import { Globe, Menu, X, BookOpen, MapPin, Sparkles, PhoneCall } from 'lucide-react';
+import { Menu, X, MapPin } from 'lucide-react';
 import mascotImg from '../assets/images/castorax_mascot_logo_1786527601351.jpg';
 
 interface NavbarProps {
@@ -31,66 +31,63 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white text-[#071224] shadow-md">
-      {/* Top Utility Bar (Dark Navy #0B1B36) */}
-      <div className="bg-[#0B1B36] text-white text-xs py-2 px-4 sm:px-8 border-b border-white/10 hidden md:block">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-[#FAF6EC] text-[#011B4C] border-b border-[#011B4C]/15 shadow-sm">
+      {/* Top Utility Bar */}
+      <div className="bg-[#011B4C] text-[#FAF6EC] text-xs py-2 px-4 sm:px-8 hidden md:block">
+        <div className="max-w-7xl mx-auto flex items-center justify-between font-sans">
           
           {/* Left Location / Status */}
-          <div className="flex items-center gap-4 text-slate-300 font-medium">
-            <span className="flex items-center gap-1.5 text-white">
-              <MapPin className="w-3.5 h-3.5 text-[#C58B1B]" />
+          <div className="flex items-center gap-4 text-[#FAF6EC]/80 font-medium">
+            <span className="flex items-center gap-1.5 text-[#FAF6EC]">
+              <MapPin className="w-3.5 h-3.5 text-[#FBAD00]" />
               <span>100% Online Tutoring — Canada & Worldwide</span>
             </span>
-            <span className="text-slate-500">|</span>
-            <span className="flex items-center gap-1.5 text-[#E8CA8A]">
-              <Sparkles className="w-3.5 h-3.5 text-[#C58B1B]" />
-              <span>{t.hero.banner}</span>
-            </span>
+            <span className="text-[#FAF6EC]/30">|</span>
+            <span>{t.hero.banner}</span>
           </div>
 
           {/* Right Links & Language Toggle */}
-          <div className="flex items-center gap-4 text-slate-300">
+          <div className="flex items-center gap-4 text-[#FAF6EC]/90">
             <button 
               onClick={() => onNavigate('math')}
-              className="hover:text-[#C58B1B] transition-colors cursor-pointer"
+              className="hover:text-[#FBAD00] transition-colors cursor-pointer"
             >
               Math & Science
             </button>
-            <span className="text-slate-600">•</span>
+            <span className="text-[#FAF6EC]/30">•</span>
             <button 
               onClick={() => onNavigate('french')}
-              className="hover:text-[#C58B1B] transition-colors cursor-pointer"
+              className="hover:text-[#FBAD00] transition-colors cursor-pointer"
             >
               French & TEF/TCF
             </button>
-            <span className="text-slate-600">•</span>
+            <span className="text-[#FAF6EC]/30">•</span>
             <button 
               onClick={() => onNavigate('pricing')}
-              className="hover:text-[#C58B1B] transition-colors cursor-pointer"
+              className="hover:text-[#FBAD00] transition-colors cursor-pointer"
             >
               Pricing
             </button>
-            <span className="text-slate-500">|</span>
+            <span className="text-[#FAF6EC]/30">|</span>
 
             {/* Language Switcher */}
-            <div className="flex items-center bg-[#162B4D] rounded-md px-1 py-0.5 border border-white/10 font-bold">
+            <div className="flex items-center bg-[#1E2A44] rounded px-1 py-0.5 border border-[#FAF6EC]/15 font-mono text-[11px]">
               <button
                 onClick={() => onLanguageChange('en')}
-                className={`px-2 py-0.5 rounded transition-colors text-[11px] cursor-pointer ${
+                className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${
                   currentLang === 'en'
-                    ? 'bg-[#C58B1B] text-[#071224] font-black'
-                    : 'text-slate-300 hover:text-white'
+                    ? 'bg-[#FBAD00] text-[#011B4C] font-bold'
+                    : 'text-[#FAF6EC]/80 hover:text-white'
                 }`}
               >
                 EN
               </button>
               <button
                 onClick={() => onLanguageChange('fr')}
-                className={`px-2 py-0.5 rounded transition-colors text-[11px] cursor-pointer ${
+                className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${
                   currentLang === 'fr'
-                    ? 'bg-[#C58B1B] text-[#071224] font-black'
-                    : 'text-slate-300 hover:text-white'
+                    ? 'bg-[#FBAD00] text-[#011B4C] font-bold'
+                    : 'text-[#FAF6EC]/80 hover:text-white'
                 }`}
               >
                 FR
@@ -112,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           }}
           className="flex items-center gap-3 text-left group cursor-pointer"
         >
-          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#C58B1B] bg-white shadow-md transition-transform duration-300 group-hover:scale-105 shrink-0">
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#011B4C]/30 bg-[#FAF6EC] shadow-sm transition-transform duration-300 group-hover:scale-105 shrink-0">
             <img
               src={mascotImg}
               alt="Castorax Beaver Crest"
@@ -121,27 +118,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             />
           </div>
           <div>
-            <div className="text-xl sm:text-2xl font-black tracking-tight text-[#0B1B36] font-sans flex items-center gap-1.5">
-              <span>{t.brand.name}</span>
+            <div className="text-xl sm:text-2xl font-display font-bold text-[#011B4C] leading-none">
+              {t.brand.name}
             </div>
-            <p className="text-[11px] text-[#C58B1B] font-extrabold uppercase tracking-widest hidden sm:block">
-              LEARN. MASTER. SUCCEED.
+            <p className="text-[10px] text-[#011B4C]/70 font-mono uppercase tracking-wider mt-1 hidden sm:block">
+              BUILD STRONG FOUNDATIONS
             </p>
           </div>
         </button>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1 lg:gap-3">
+        <nav className="hidden md:flex items-center gap-2 lg:gap-4 font-sans">
           {navItems.map((item) => {
             const isActive = activePage === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`px-3 py-2 text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
+                className={`px-3 py-2 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   isActive
-                    ? 'text-[#C58B1B] border-b-2 border-[#C58B1B]'
-                    : 'text-[#0B1B36] hover:text-[#C58B1B]'
+                    ? 'text-[#011B4C] border-b-2 border-[#FBAD00]'
+                    : 'text-[#1E2A44] hover:text-[#011B4C]'
                 }`}
               >
                 {item.label}
@@ -150,28 +147,27 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Right Gold Apply / Booking Button */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Right CTA Button */}
+        <div className="hidden md:flex items-center gap-3 font-sans">
           <button
             onClick={onOpenBooking}
-            className="bg-[#C58B1B] hover:bg-[#A77312] text-white font-extrabold px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2 text-xs uppercase tracking-wider cursor-pointer"
+            className="bg-[#011B4C] hover:bg-[#1E2A44] text-[#FAF6EC] font-bold px-5 py-2.5 rounded-lg shadow-sm transition-all text-xs uppercase tracking-wider cursor-pointer"
           >
-            <BookOpen className="w-4 h-4" />
-            <span>{t.nav.cta}</span>
+            {t.nav.cta}
           </button>
         </div>
 
         {/* Mobile menu trigger */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-2 font-mono">
           <button
             onClick={() => onLanguageChange(currentLang === 'en' ? 'fr' : 'en')}
-            className="px-2.5 py-1 rounded bg-[#FAF3E3] border border-[#E8CA8A] text-xs font-bold text-[#0B1B36]"
+            className="px-2.5 py-1 rounded bg-[#F1E9D8] border border-[#011B4C]/20 text-xs font-bold text-[#011B4C]"
           >
             {currentLang.toUpperCase()}
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg text-[#0B1B36] hover:bg-slate-100 cursor-pointer"
+            className="p-2 rounded-lg text-[#011B4C] hover:bg-[#F1E9D8] cursor-pointer"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -181,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-xl">
+        <div className="md:hidden bg-[#FAF6EC] border-t border-[#011B4C]/15 px-4 pt-3 pb-6 space-y-2 shadow-lg font-sans">
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -189,27 +185,26 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onNavigate(item.id);
                 setMobileMenuOpen(false);
               }}
-              className={`w-full text-left px-4 py-3 rounded-xl text-sm font-bold uppercase tracking-wider flex items-center justify-between cursor-pointer ${
+              className={`w-full text-left px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center justify-between cursor-pointer ${
                 activePage === item.id
-                  ? 'bg-[#0B1B36] text-[#C58B1B]'
-                  : 'text-[#0B1B36] hover:bg-slate-100'
+                  ? 'bg-[#011B4C] text-[#FBAD00]'
+                  : 'text-[#011B4C] hover:bg-[#F1E9D8]'
               }`}
             >
               <span>{item.label}</span>
-              {activePage === item.id && <span className="text-[#C58B1B] font-bold">✓</span>}
+              {activePage === item.id && <span className="text-[#FBAD00] font-bold">✓</span>}
             </button>
           ))}
 
-          <div className="pt-4 border-t border-slate-200 flex flex-col gap-2">
+          <div className="pt-4 border-t border-[#011B4C]/15">
             <button
               onClick={() => {
                 onOpenBooking();
                 setMobileMenuOpen(false);
               }}
-              className="w-full bg-[#C58B1B] text-white font-black py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-lg cursor-pointer uppercase text-xs tracking-wider"
+              className="w-full bg-[#011B4C] text-[#FAF6EC] font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 shadow cursor-pointer uppercase text-xs tracking-wider"
             >
-              <BookOpen className="w-4 h-4" />
-              <span>{t.nav.cta}</span>
+              {t.nav.cta}
             </button>
           </div>
         </div>

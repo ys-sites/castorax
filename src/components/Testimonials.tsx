@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Language } from '../types';
 import { translations } from '../translations';
-import { ArrowRight, Quote, Star, Award } from 'lucide-react';
+import { FoundationDivider } from './FoundationDivider';
 
 interface TestimonialsProps {
   currentLang: Language;
@@ -9,106 +9,102 @@ interface TestimonialsProps {
 
 export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
   const t = translations[currentLang];
-
-  const stories = [
-    {
-      date: 'MAY 10',
-      name: 'Amine K.',
-      role: currentLang === 'en' ? 'TEF Canada Student' : 'Étudiant TEF Canada',
-      badge: 'NCLC 7 Target Achieved',
-      headline: currentLang === 'en' ? 'Passed TEF Canada on First Attempt for Permanent Residency' : 'TEF Canada réussi du premier coup pour la résidence',
-      quoteEn: 'I needed NCLC 7 on TEF Canada for my permanent residency application. With timed practice drills and oral feedback, I passed on my first attempt!',
-      quoteFr: 'J’avais besoin du niveau NCLC 7 au TEF Canada pour ma demande de résidence permanente. Grâce aux simulations, j’ai réussi du premier coup !',
-    },
-    {
-      date: 'MAY 06',
-      name: 'Sophie M.',
-      role: currentLang === 'en' ? 'Grade 10 Math Parent' : 'Parente d\'élève (Maths Sec 4)',
-      badge: 'Grade Up: 65% → 88%',
-      headline: currentLang === 'en' ? 'Dramatic Grade Jump from 65% to 88% on Final Math Exam' : 'Remontée spectaculaire de 65% à 88% en mathématiques',
-      quoteEn: 'My son went from feeling lost in algebra to scoring 88% on his final exam. Castorax explains concepts with so much patience and step-by-step clarity!',
-      quoteFr: 'Mon fils est passé d’un sentiment d’abandon en algèbre à 88 % à son examen final. Castorax explique les concepts avec tellement de patience et de clarté !',
-    },
-    {
-      date: 'APR 28',
-      name: 'David L.',
-      role: currentLang === 'en' ? 'High School Physics' : 'Élève en physique secondaire',
-      badge: 'Score: 92%',
-      headline: currentLang === 'en' ? 'Scored 92% in Physics with Between-Session Homework Help' : '92% en physique grâce au soutien entre les cours',
-      quoteEn: 'Having quick support between sessions whenever I got stuck on tough homework problems saved me before midterms.',
-      quoteFr: 'Avoir un soutien rapide entre les cours lorsque je bloquais sur un devoir m’a énormément aidé avant les examens.',
-    },
-  ];
+  const testData = t.testimonials;
+  const [showEnParentQuote, setShowEnParentQuote] = useState(false);
 
   return (
-    <section className="py-20 bg-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-[#FAF6EC] relative border-t border-[#011B4C]/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
-        {/* Header (Matching LATEST NEWS & EVENTS header) */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12 border-b border-slate-200 pb-4 gap-4">
-          <div>
-            <span className="text-xs font-black tracking-widest text-[#C58B1B] uppercase font-sans">
-              {currentLang === 'en' ? 'STUDENT SUCCESS STORIES' : 'RÉSULTATS DES ÉLÈVES'}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif-academic font-bold text-[#0B1B36] mt-1">
-              {currentLang === 'en' ? 'Real Stories of Progress & Success' : 'Des progrès et des succès concrets'}
-            </h2>
-          </div>
-          <span className="text-xs font-extrabold text-[#0B1B36] uppercase tracking-wider flex items-center gap-1 cursor-pointer hover:text-[#C58B1B]">
-            <span>{currentLang === 'en' ? 'VIEW ALL STORIES' : 'VOIR TOUS LES TÉMOIGNAGES'}</span>
-            <ArrowRight className="w-4 h-4 text-[#C58B1B]" />
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#011B4C]/70 font-sans">
+            {testData.eyebrow}
           </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#011B4C]">
+            {testData.title}
+          </h2>
+          <p className="text-sm sm:text-base text-[#1E2A44] font-sans">
+            {testData.subtitle}
+          </p>
         </div>
 
-        {/* 3 Story Cards Grid (Matching Northfield News Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {stories.map((story, idx) => (
-            <div
-              key={idx}
-              className="bg-[#FAFAFB] border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-            >
-              <div>
-                {/* Header Banner with Date Badge */}
-                <div className="bg-[#0B1B36] text-white p-5 relative flex items-center justify-between">
-                  <div className="bg-[#C58B1B] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded">
-                    {story.date}
-                  </div>
-                  <div className="flex text-[#E8CA8A] text-xs">
-                    {'★'.repeat(5)}
-                  </div>
-                </div>
-
-                <div className="p-6 space-y-3">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#C58B1B] bg-[#FAF3E3] px-2.5 py-0.5 rounded border border-[#E8CA8A]">
-                    {story.badge}
-                  </span>
-                  
-                  <h3 className="text-base font-bold text-[#0B1B36] font-sans group-hover:text-[#C58B1B] transition-colors leading-snug">
-                    {story.headline}
-                  </h3>
-
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal italic">
-                    "{currentLang === 'en' ? story.quoteEn : story.quoteFr}"
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-6 pt-0 border-t border-slate-200/60 mt-4 flex items-center justify-between">
-                <div>
-                  <div className="text-xs font-black text-[#0B1B36]">{story.name}</div>
-                  <div className="text-[11px] text-slate-500 font-medium">{story.role}</div>
-                </div>
-                <span className="text-xs font-bold text-[#C58B1B] uppercase tracking-wider group-hover:underline cursor-pointer flex items-center gap-1">
-                  READ MORE →
+        {/* 2 Editorial Pull-Quote Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          
+          {/* Card 1: Zeeshan (French Track) */}
+          <div className="bg-[#F1E9D8] border border-[#011B4C]/15 rounded-2xl p-8 sm:p-10 shadow-sm flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#011B4C] bg-[#011B4C]/10 px-3 py-1 rounded">
+                  {testData.items[0].track}
+                </span>
+                <span className="text-4xl font-display italic text-[#011B4C]/30 leading-none">
+                  "
                 </span>
               </div>
 
+              <blockquote className="text-base sm:text-lg font-display italic text-[#011B4C] leading-relaxed">
+                "{testData.items[0].quote}"
+              </blockquote>
             </div>
-          ))}
+
+            <div className="pt-6 border-t border-[#011B4C]/15">
+              <div className="font-display font-bold text-base text-[#011B4C]">
+                {testData.items[0].name}
+              </div>
+              <div className="text-xs font-sans text-[#1E2A44]/80">
+                {testData.items[0].role}
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Parent of Secondary 1 Student (Math Track) */}
+          <div className="bg-[#011B4C] text-[#FAF6EC] border border-[#011B4C] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between space-y-6">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FBAD00] bg-[#FAF6EC]/10 px-3 py-1 rounded">
+                  {testData.items[1].track}
+                </span>
+                <span className="text-4xl font-display italic text-[#FBAD00]/40 leading-none">
+                  "
+                </span>
+              </div>
+
+              {/* Display French verbatim primary or EN translation */}
+              <blockquote className="text-sm sm:text-base font-display italic text-[#FAF6EC] leading-relaxed">
+                {showEnParentQuote
+                  ? `"${testData.items[1].quote}"`
+                  : (testData.items[1].quoteFrOriginal || testData.items[1].quote)}
+              </blockquote>
+
+              {/* Toggle option for translation */}
+              <div className="pt-2">
+                <button
+                  onClick={() => setShowEnParentQuote(!showEnParentQuote)}
+                  className="text-xs font-mono font-bold text-[#FBAD00] hover:underline cursor-pointer"
+                >
+                  {showEnParentQuote ? "← View Original French (Verbatim Client SMS)" : "Read English Translation →"}
+                </button>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-[#FAF6EC]/15">
+              <div className="font-display font-bold text-base text-[#FAF6EC]">
+                {testData.items[1].name}
+              </div>
+              <div className="text-xs font-sans text-[#FAF6EC]/75">
+                {testData.items[1].role}
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        {/* Foundation Divider */}
+        <FoundationDivider align="center" />
 
       </div>
     </section>
   );
 };
-

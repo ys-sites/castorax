@@ -24,47 +24,49 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-[#0B1B36] text-white border-t-4 border-[#C58B1B] pt-16 pb-8">
+    <footer className="bg-[#011B4C] text-[#FAF6EC] border-t-2 border-[#FBAD00] pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 4 Main Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#FAF6EC]/15">
           
           {/* Col 1: Brand & Tagline */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img
-                src={mascotImg}
-                alt="Castorax Logo"
-                className="w-12 h-12 rounded-full border-2 border-[#C58B1B] bg-white object-cover"
-                referrerPolicy="no-referrer"
-              />
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-[#FBAD00] bg-[#FAF6EC] shrink-0">
+                <img
+                  src={mascotImg}
+                  alt="Castorax Logo"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
               <div>
-                <h3 className="text-xl font-serif-academic font-bold text-white">{t.brand.name}</h3>
-                <p className="text-[11px] text-[#E8CA8A] font-extrabold uppercase tracking-widest">
-                  LEARN. MASTER. SUCCEED.
+                <h3 className="text-lg font-display font-bold text-[#FAF6EC]">{t.brand.name}</h3>
+                <p className="text-[10px] text-[#FBAD00] font-mono uppercase tracking-wider">
+                  BUILD STRONG FOUNDATIONS
                 </p>
               </div>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed font-normal">
+            <p className="text-xs text-[#FAF6EC]/80 leading-relaxed font-sans">
               {t.footer.tagline}
             </p>
-            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded text-xs text-[#E8CA8A]">
-              <Clock className="w-3.5 h-3.5 text-[#C58B1B]" />
+            <div className="inline-flex items-center gap-2 bg-[#FAF6EC]/5 border border-[#FAF6EC]/10 px-3 py-1.5 rounded text-xs text-[#FAF6EC]/90 font-sans">
+              <Clock className="w-3.5 h-3.5 text-[#FBAD00]" />
               <span>{t.footer.reply}</span>
             </div>
           </div>
 
           {/* Col 2: Quick Links */}
           <div className="space-y-3">
-            <h4 className="text-[#E8CA8A] font-bold text-xs uppercase tracking-widest font-sans">
+            <h4 className="text-[#FBAD00] font-mono font-bold text-xs uppercase tracking-widest">
               QUICK LINKS
             </h4>
-            <ul className="space-y-2 text-xs text-slate-300 font-medium">
+            <ul className="space-y-2 text-xs text-[#FAF6EC]/80 font-sans">
               <li>
                 <button
                   onClick={() => onNavigate('home')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer"
                 >
                   {t.nav.home}
                 </button>
@@ -72,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('math')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer"
                 >
                   {t.nav.math}
                 </button>
@@ -80,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('french')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer"
                 >
                   {t.nav.french}
                 </button>
@@ -88,7 +90,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('pricing')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer"
                 >
                   {t.nav.pricing}
                 </button>
@@ -96,7 +98,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('contact')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer"
                 >
                   {t.nav.contact}
                 </button>
@@ -106,14 +108,14 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 3: Programs Overview */}
           <div className="space-y-3">
-            <h4 className="text-[#E8CA8A] font-bold text-xs uppercase tracking-widest font-sans">
+            <h4 className="text-[#FBAD00] font-mono font-bold text-xs uppercase tracking-widest">
               TUTORING PROGRAMS
             </h4>
-            <ul className="space-y-2 text-xs text-slate-300 font-medium">
+            <ul className="space-y-2 text-xs text-[#FAF6EC]/80 font-sans">
               <li>
                 <button
                   onClick={() => onNavigate('math')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer text-left"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer text-left font-mono"
                 >
                   Math & Science Tutoring ($40/hr)
                 </button>
@@ -121,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('french')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer text-left"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer text-left font-mono"
                 >
                   French Language & TEF/TCF ($45/hr)
                 </button>
@@ -129,7 +131,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('math')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer text-left"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer text-left font-sans"
                 >
                   High School Calculus & Physics
                 </button>
@@ -137,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onNavigate('french')}
-                  className="hover:text-[#C58B1B] transition-colors cursor-pointer text-left"
+                  className="hover:text-[#FBAD00] transition-colors cursor-pointer text-left font-sans"
                 >
                   Canadian Immigration French Prep
                 </button>
@@ -146,27 +148,27 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           {/* Col 4: Contact Us */}
-          <div className="space-y-3">
-            <h4 className="text-[#E8CA8A] font-bold text-xs uppercase tracking-widest font-sans">
+          <div className="space-y-3 font-sans">
+            <h4 className="text-[#FBAD00] font-mono font-bold text-xs uppercase tracking-widest">
               CONTACT US
             </h4>
-            <div className="space-y-2 text-xs text-slate-300">
+            <div className="space-y-2 text-xs text-[#FAF6EC]/80">
               <p className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#C58B1B] shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-[#FBAD00] shrink-0" />
                 <span>100% Online · Canada & Global</span>
               </p>
-              <p className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#C58B1B] shrink-0" />
+              <p className="flex items-center gap-2 font-mono">
+                <Mail className="w-3.5 h-3.5 text-[#FBAD00] shrink-0" />
                 <span>{t.brand.email}</span>
               </p>
-              <p className="flex items-center gap-2">
-                <Instagram className="w-3.5 h-3.5 text-[#C58B1B] shrink-0" />
+              <p className="flex items-center gap-2 font-mono">
+                <Instagram className="w-3.5 h-3.5 text-[#FBAD00] shrink-0" />
                 <span>{t.brand.instagram}</span>
               </p>
               <div className="pt-2">
                 <button
                   onClick={onOpenBooking}
-                  className="w-full bg-[#C58B1B] hover:bg-[#A77312] text-white font-extrabold py-2.5 px-3 rounded text-xs uppercase tracking-wider transition-colors cursor-pointer"
+                  className="w-full bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] font-bold py-2.5 px-3 rounded text-xs uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   {t.hero.cta}
                 </button>
@@ -177,15 +179,15 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Legal & Language Bar */}
-        <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-[#FAF6EC]/60 gap-4 font-sans">
           <p>© {new Date().getFullYear()} {t.brand.name}. {t.footer.rights}</p>
           
-          <div className="flex items-center gap-4 text-[11px]">
-            <button onClick={() => onLanguageChange('en')} className={`hover:text-white cursor-pointer ${currentLang === 'en' ? 'text-[#E8CA8A] font-bold' : ''}`}>English (EN)</button>
+          <div className="flex items-center gap-4 text-[11px] font-mono">
+            <button onClick={() => onLanguageChange('en')} className={`hover:text-white cursor-pointer ${currentLang === 'en' ? 'text-[#FBAD00] font-bold' : ''}`}>English (EN)</button>
             <span>|</span>
-            <button onClick={() => onLanguageChange('fr')} className={`hover:text-white cursor-pointer ${currentLang === 'fr' ? 'text-[#E8CA8A] font-bold' : ''}`}>Français (FR)</button>
+            <button onClick={() => onLanguageChange('fr')} className={`hover:text-white cursor-pointer ${currentLang === 'fr' ? 'text-[#FBAD00] font-bold' : ''}`}>Français (FR)</button>
             <span>|</span>
-            <button onClick={scrollToTop} className="hover:text-[#C58B1B] flex items-center gap-1 cursor-pointer">
+            <button onClick={scrollToTop} className="hover:text-[#FBAD00] flex items-center gap-1 cursor-pointer">
               <span>TOP</span>
               <ArrowUp className="w-3 h-3" />
             </button>

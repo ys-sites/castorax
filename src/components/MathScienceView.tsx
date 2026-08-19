@@ -1,7 +1,8 @@
 import React from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
-import { Calculator, CheckCircle2, Sparkles, Trophy, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Calculator, Check } from 'lucide-react';
+import { FoundationDivider } from './FoundationDivider';
 
 interface MathScienceViewProps {
   currentLang: Language;
@@ -17,32 +18,31 @@ export const MathScienceView: React.FC<MathScienceViewProps> = ({
   const t = translations[currentLang];
 
   return (
-    <div className="bg-[#F8FAFC] py-12 space-y-16">
+    <div className="bg-[#FAF6EC] py-12 space-y-16">
       
       {/* Hero Header */}
-      <section className="bg-gradient-to-r from-[#011B4C] to-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 rounded-3xl max-w-7xl mx-auto shadow-xl border-2 border-[#FBAD00]/30 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FBAD00]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="max-w-3xl space-y-4 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FEF3C7] text-[#011B4C] border border-[#FCD34D] text-xs font-black uppercase tracking-wider">
+      <section className="bg-[#011B4C] text-[#FAF6EC] py-16 px-6 sm:px-10 rounded-2xl max-w-7xl mx-auto shadow-xl border border-[#011B4C] relative overflow-hidden">
+        <div className="max-w-3xl space-y-5 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-md bg-[#FAF6EC]/10 text-[#FBAD00] text-xs font-mono font-bold uppercase tracking-wider border border-[#FBAD00]/30">
             <Calculator className="w-4 h-4 text-[#FBAD00]" />
             <span>$40 / hr · Math & Science Tutoring</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight font-sans text-white">
+          <h1 className="text-3xl sm:text-5xl font-display font-bold text-[#FAF6EC] leading-tight">
             {t.mathPage.heroTitle}
           </h1>
-          <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-[#FAF6EC]/85 leading-relaxed font-sans">
             {t.mathPage.heroSubtitle}
           </p>
           <div className="pt-2 flex flex-wrap gap-3">
             <button
               onClick={onOpenBooking}
-              className="bg-[#FBAD00] hover:bg-[#E09B00] text-[#011B4C] font-black px-6 py-3.5 rounded-xl shadow-lg transition-all cursor-pointer"
+              className="bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow cursor-pointer transition-colors"
             >
               {t.hero.cta}
             </button>
             <button
               onClick={() => onNavigate('pricing')}
-              className="bg-white/10 hover:bg-white/20 text-white font-extrabold px-5 py-3.5 rounded-xl border border-white/20 transition-all cursor-pointer shadow-sm"
+              className="bg-[#FAF6EC]/10 hover:bg-[#FAF6EC]/20 text-[#FAF6EC] font-bold text-xs uppercase tracking-wider px-5 py-3.5 rounded-xl border border-[#FAF6EC]/20 transition-colors cursor-pointer"
             >
               {t.nav.pricing}
             </button>
@@ -52,11 +52,11 @@ export const MathScienceView: React.FC<MathScienceViewProps> = ({
 
       {/* Outcome Strip */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FEF3C7] text-[#011B4C] p-6 rounded-2xl shadow-sm flex flex-col md:flex-row items-center justify-around gap-6 text-center border-2 border-[#FCD34D]">
+        <div className="bg-[#F1E9D8] text-[#011B4C] p-6 rounded-2xl shadow-sm flex flex-col md:flex-row items-center justify-around gap-6 text-center border border-[#011B4C]/15">
           {t.mathPage.outcomes.map((outcome, idx) => (
             <div key={idx} className="flex items-center gap-3">
-              <Trophy className="w-6 h-6 shrink-0 text-[#FBAD00] fill-[#011B4C]" />
-              <span className="text-lg sm:text-xl font-black text-[#011B4C] tracking-wide font-sans">{outcome}</span>
+              <span className="w-3 h-3 rounded-full bg-[#FBAD00] shrink-0" />
+              <span className="text-lg font-display font-bold text-[#011B4C]">{outcome}</span>
             </div>
           ))}
         </div>
@@ -64,11 +64,11 @@ export const MathScienceView: React.FC<MathScienceViewProps> = ({
 
       {/* Subjects Offered Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <h2 className="text-2xl sm:text-4xl font-black text-[#011B4C] font-sans">
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+          <h2 className="text-2xl sm:text-4xl font-display font-bold text-[#011B4C]">
             {t.mathPage.subjectsTitle}
           </h2>
-          <p className="text-sm text-slate-600 mt-2">
+          <p className="text-sm text-[#1E2A44] font-sans">
             {currentLang === 'en'
               ? 'Comprehensive academic support tailored to your curriculum requirements.'
               : 'Un soutien académique complet adapté aux exigences de votre programme.'}
@@ -79,12 +79,12 @@ export const MathScienceView: React.FC<MathScienceViewProps> = ({
           {t.mathPage.subjects.map((sub, idx) => (
             <div
               key={idx}
-              className="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm hover:shadow-md hover:border-[#011B4C] transition-all flex items-center gap-3.5"
+              className="bg-[#FAF6EC] border border-[#011B4C]/15 p-5 rounded-xl shadow-sm hover:border-[#011B4C] transition-all flex items-center gap-3.5"
             >
-              <div className="w-9 h-9 rounded-xl bg-[#011B4C] text-[#FBAD00] font-black flex items-center justify-center shrink-0 text-sm">
+              <div className="w-8 h-8 rounded-lg bg-[#011B4C] text-[#FBAD00] font-bold flex items-center justify-center shrink-0 text-sm">
                 ✓
               </div>
-              <span className="text-sm font-extrabold text-[#0A192F]">{sub}</span>
+              <span className="text-sm font-bold text-[#011B4C] font-sans">{sub}</span>
             </div>
           ))}
         </div>
@@ -92,44 +92,38 @@ export const MathScienceView: React.FC<MathScienceViewProps> = ({
 
       {/* 7 Reasons Why Choose Castorax */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white border-2 border-slate-200 rounded-3xl p-8 sm:p-12 shadow-xl space-y-10">
+        <div className="bg-[#F1E9D8] border border-[#011B4C]/15 rounded-2xl p-8 sm:p-12 shadow-sm space-y-10">
           <div className="text-center max-w-3xl mx-auto space-y-2">
-            <span className="text-xs font-black text-[#011B4C] uppercase tracking-wider bg-[#FEF3C7] px-3.5 py-1.5 rounded-full border border-[#FCD34D] font-sans">
+            <span className="text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider bg-[#FAF6EC] px-3.5 py-1 rounded border border-[#011B4C]/15">
               {t.brand.badge}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-black text-[#011B4C] font-sans">
+            <h2 className="text-2xl sm:text-4xl font-display font-bold text-[#011B4C]">
               {t.mathPage.whyChooseTitle}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {t.mathPage.whyChoose.map((point, idx) => (
-              <div key={idx} className="p-6 bg-[#F8FAFC] border border-slate-200 rounded-2xl hover:border-[#011B4C] transition-all space-y-3">
-                <div className="w-10 h-10 rounded-xl bg-[#011B4C] text-[#FBAD00] font-black text-sm flex items-center justify-center shadow-sm">
-                  0{idx + 1}
-                </div>
-                <p className="text-sm font-semibold text-slate-800 leading-relaxed">
-                  {point}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {t.mathPage.whyChoose.map((reason, idx) => (
+              <div key={idx} className="bg-[#FAF6EC] p-5 rounded-xl border border-[#011B4C]/15 flex items-start gap-3.5">
+                <Check className="w-5 h-5 text-[#FBAD00] shrink-0 mt-0.5" />
+                <p className="text-xs sm:text-sm text-[#1E2A44] leading-relaxed font-sans font-medium">
+                  {reason}
                 </p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Closing Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="bg-[#011B4C] text-white border-2 border-[#FBAD00] p-8 sm:p-12 rounded-3xl space-y-6">
-          <h3 className="text-2xl sm:text-3xl font-black text-white font-sans">
-            {t.closingCta.title}
-          </h3>
-          <button
-            onClick={onOpenBooking}
-            className="bg-[#FBAD00] hover:bg-[#E09B00] text-[#011B4C] font-black text-base px-8 py-4 rounded-xl shadow-xl transition-all cursor-pointer"
-          >
-            {t.closingCta.button}
-          </button>
+          <div className="pt-4 text-center">
+            <button
+              onClick={onOpenBooking}
+              className="bg-[#011B4C] hover:bg-[#1E2A44] text-[#FAF6EC] font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-xl shadow transition-all cursor-pointer"
+            >
+              {t.hero.cta}
+            </button>
+          </div>
         </div>
+
+        <FoundationDivider className="mt-12" />
       </section>
 
     </div>

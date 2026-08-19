@@ -3,6 +3,7 @@ import { Language } from '../types';
 import { translations } from '../translations';
 import { Mail, Send, CheckCircle2, Clock, Copy, Check, Instagram } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { FoundationDivider } from './FoundationDivider';
 
 interface ContactSectionProps {
   currentLang: Language;
@@ -33,7 +34,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
         particleCount: 80,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#0B1B36', '#C58B1B', '#E8CA8A'],
+        colors: ['#011B4C', '#FBAD00', '#F1E9D8'],
       });
     } catch {
       // ignore
@@ -41,20 +42,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
   };
 
   return (
-    <div className="space-y-0">
+    <div className="space-y-0 bg-[#FAF6EC]">
       
-      {/* STAY CONNECTED Golden Banner (Matching Northfield Banner) */}
-      <section className="bg-[#C58B1B] text-white py-8 px-4 sm:px-8 border-y border-[#A77312]">
+      {/* Top Banner */}
+      <section className="bg-[#011B4C] text-[#FAF6EC] py-8 px-4 sm:px-8 border-y border-[#011B4C]">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3 text-center md:text-left">
-            <div className="w-10 h-10 rounded-full bg-[#0B1B36] text-white flex items-center justify-center shrink-0">
-              <Mail className="w-5 h-5 text-[#E8CA8A]" />
+            <div className="w-10 h-10 rounded-full bg-[#FBAD00] text-[#011B4C] flex items-center justify-center shrink-0">
+              <Mail className="w-5 h-5 text-[#011B4C]" />
             </div>
             <div>
-              <h3 className="text-sm font-extrabold uppercase tracking-widest text-[#0B1B36] font-sans">
+              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#FBAD00]">
                 {currentLang === 'en' ? 'STAY CONNECTED & BOOK YOUR SESSION' : 'RESTEZ CONNECTÉ & RÉSERVEZ VOTRE SÉANCE'}
               </h3>
-              <p className="text-xs text-white/90 font-medium">
+              <p className="text-xs text-[#FAF6EC]/85 font-sans">
                 {currentLang === 'en'
                   ? 'Send a quick message to check availability or discuss your specific tutoring goals.'
                   : 'Envoyez un message rapide pour vérifier les disponibilités ou discuter de vos objectifs.'}
@@ -62,20 +63,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
             </div>
           </div>
 
-          <div className="flex items-center gap-2 w-full md:w-auto max-w-md">
+          <div className="flex items-center gap-2 w-full md:w-auto max-w-md font-sans">
             <input
               type="email"
               placeholder="Enter your email..."
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="bg-white text-[#071224] px-4 py-2.5 rounded text-xs focus:outline-none flex-1 font-medium placeholder-slate-400"
+              className="bg-[#FAF6EC] text-[#011B4C] px-4 py-2.5 rounded-lg text-xs focus:outline-none flex-1 font-medium placeholder-[#1E2A44]/50 border border-[#FAF6EC]/20"
             />
             <button
               onClick={() => {
                 const el = document.getElementById('contact-form');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="bg-[#0B1B36] hover:bg-[#162B4D] text-white font-extrabold text-xs uppercase tracking-wider px-5 py-2.5 rounded shadow cursor-pointer transition-colors shrink-0"
+              className="bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg shadow cursor-pointer transition-colors shrink-0"
             >
               {currentLang === 'en' ? 'SUBSCRIBE' : 'S\'INSCRIRE'}
             </button>
@@ -84,18 +85,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
       </section>
 
       {/* Main Contact Form Section */}
-      <section id="contact-form" className="py-20 bg-[#FAFAFB] relative">
+      <section id="contact-form" className="py-20 bg-[#FAF6EC] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Title */}
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
-            <span className="text-xs font-black tracking-widest text-[#C58B1B] uppercase font-sans">
+            <span className="text-xs font-bold tracking-widest text-[#011B4C]/70 uppercase font-sans">
               {t.footer.contactTitle}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif-academic font-bold text-[#0B1B36] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-[#011B4C]">
               {currentLang === 'en' ? 'Get In Touch With Castorax' : 'Contactez Tutorat Castorax'}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-[#1E2A44] font-sans">
               {t.hero.microcopy}
             </p>
           </div>
@@ -107,49 +108,49 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
             <div className="lg:col-span-5 space-y-4">
               
               {/* Email Card */}
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl space-y-3 shadow-sm">
-                <div className="w-10 h-10 rounded-lg bg-[#FAF3E3] border border-[#E8CA8A] text-[#C58B1B] flex items-center justify-center">
+              <div className="bg-[#F1E9D8] border border-[#011B4C]/15 p-6 rounded-2xl space-y-3 shadow-sm">
+                <div className="w-10 h-10 rounded-lg bg-[#011B4C] text-[#FBAD00] flex items-center justify-center">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-black text-[#0B1B36] uppercase tracking-wider">Email Direct</h3>
-                  <p className="text-sm font-bold text-slate-800">{t.brand.email}</p>
+                  <h3 className="text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider">Email Direct</h3>
+                  <p className="text-sm font-mono font-bold text-[#011B4C]">{t.brand.email}</p>
                 </div>
                 <button
                   onClick={handleCopyEmail}
-                  className="w-full bg-[#0B1B36] text-white text-xs font-extrabold uppercase tracking-wider py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[#162B4D] transition-colors cursor-pointer"
+                  className="w-full bg-[#011B4C] text-[#FAF6EC] text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-[#1E2A44] transition-colors cursor-pointer"
                 >
-                  {copied ? <Check className="w-4 h-4 text-[#C58B1B]" /> : <Copy className="w-4 h-4" />}
+                  {copied ? <Check className="w-4 h-4 text-[#FBAD00]" /> : <Copy className="w-4 h-4" />}
                   <span>{copied ? t.bookingModal.copiedNotice : t.bookingModal.copyEmail}</span>
                 </button>
               </div>
 
               {/* Instagram Card */}
-              <div className="bg-white border border-slate-200 p-6 rounded-2xl space-y-3 shadow-sm">
-                <div className="w-10 h-10 rounded-lg bg-[#FAF3E3] border border-[#E8CA8A] text-[#C58B1B] flex items-center justify-center">
+              <div className="bg-[#F1E9D8] border border-[#011B4C]/15 p-6 rounded-2xl space-y-3 shadow-sm">
+                <div className="w-10 h-10 rounded-lg bg-[#011B4C] text-[#FBAD00] flex items-center justify-center">
                   <Instagram className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-black text-[#0B1B36] uppercase tracking-wider">Instagram Direct</h3>
-                  <p className="text-sm font-bold text-slate-800">{t.brand.instagram}</p>
+                  <h3 className="text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider">Instagram Direct</h3>
+                  <p className="text-sm font-mono font-bold text-[#011B4C]">{t.brand.instagram}</p>
                 </div>
                 <a
                   href="https://instagram.com/castoraxtutoring"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full bg-[#C58B1B] hover:bg-[#A77312] text-white text-xs font-extrabold uppercase tracking-wider py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 shadow cursor-pointer text-center"
+                  className="w-full bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 shadow cursor-pointer text-center"
                 >
                   <span>{t.bookingModal.instagramCTA}</span>
                 </a>
               </div>
 
               {/* Response Time Card */}
-              <div className="bg-[#0B1B36] text-white p-6 rounded-2xl border border-[#C58B1B]/40 space-y-2 shadow-lg">
-                <div className="flex items-center gap-2 text-[#E8CA8A] text-xs font-bold uppercase tracking-wider">
-                  <Clock className="w-4 h-4 text-[#C58B1B]" />
+              <div className="bg-[#011B4C] text-[#FAF6EC] p-6 rounded-2xl border border-[#011B4C] space-y-2 shadow">
+                <div className="flex items-center gap-2 text-[#FBAD00] text-xs font-mono font-bold uppercase tracking-wider">
+                  <Clock className="w-4 h-4 text-[#FBAD00]" />
                   <span>{currentLang === 'en' ? 'Fast Response Guarantee' : 'Garantie de réponse rapide'}</span>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                <p className="text-xs text-[#FAF6EC]/80 font-sans">
                   {t.brand.responseTime}
                 </p>
               </div>
@@ -157,21 +158,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
             </div>
 
             {/* Right Column: Direct Form */}
-            <div className="lg:col-span-7 bg-white rounded-2xl p-8 shadow-xl border border-slate-200">
+            <div className="lg:col-span-7 bg-[#F1E9D8] rounded-2xl p-8 shadow-sm border border-[#011B4C]/15 font-sans">
               {submitted ? (
                 <div className="text-center py-10 space-y-4">
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 bg-[#011B4C] text-[#FBAD00] rounded-full flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <h3 className="text-2xl font-serif-academic font-bold text-[#0B1B36]">
+                  <h3 className="text-2xl font-display font-bold text-[#011B4C]">
                     {currentLang === 'en' ? 'Message Sent!' : 'Message envoyé !'}
                   </h3>
-                  <p className="text-sm text-slate-600">
+                  <p className="text-sm text-[#1E2A44]">
                     {t.brand.responseTime}
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="bg-[#0B1B36] text-white font-bold px-6 py-2.5 rounded text-xs uppercase tracking-wider cursor-pointer"
+                    className="bg-[#011B4C] text-[#FAF6EC] font-bold px-6 py-2.5 rounded-lg text-xs uppercase tracking-wider cursor-pointer"
                   >
                     {currentLang === 'en' ? 'Send Another Message' : 'Envoyer un autre message'}
                   </button>
@@ -179,7 +180,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#0B1B36] uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider mb-1">
                       {t.bookingModal.fullName} *
                     </label>
                     <input
@@ -188,12 +189,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
                       placeholder={currentLang === 'en' ? 'Your full name...' : 'Votre nom complet...'}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#C58B1B] text-sm"
+                      className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#FAF6EC] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#0B1B36] uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider mb-1">
                       {t.bookingModal.email} *
                     </label>
                     <input
@@ -202,18 +203,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
                       placeholder="name@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#C58B1B] text-sm"
+                      className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#FAF6EC] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#0B1B36] uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider mb-1">
                       {t.bookingModal.programSelect}
                     </label>
                     <select
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#C58B1B] text-sm bg-white font-medium"
+                      className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#FAF6EC] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm font-medium"
                     >
                       <option value="math">{t.bookingModal.programMath}</option>
                       <option value="french">{t.bookingModal.programFrench}</option>
@@ -222,7 +223,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#0B1B36] uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider mb-1">
                       {t.bookingModal.message}
                     </label>
                     <textarea
@@ -231,13 +232,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
                       placeholder={currentLang === 'en' ? 'Your questions or tutoring goals...' : 'Vos questions ou objectifs...'}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#C58B1B] text-sm"
+                      className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#FAF6EC] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-[#C58B1B] hover:bg-[#A77312] text-white font-extrabold text-xs uppercase tracking-wider py-4 rounded shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-[#011B4C] hover:bg-[#1E2A44] text-[#FBAD00] font-bold text-xs uppercase tracking-wider py-4 rounded-lg shadow transition-all flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
                     <span>{t.hero.cta}</span>
@@ -249,6 +250,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
           </div>
 
         </div>
+
+        <FoundationDivider className="mt-16" />
       </section>
     </div>
   );
