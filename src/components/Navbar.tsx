@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
 import { Menu, X, MapPin } from 'lucide-react';
-import mascotImg from '../assets/images/castorax_mascot_logo_1786527601351.jpg';
+import brandLogo from '../assets/images/logo.jpeg';
 
 interface NavbarProps {
   currentLang: Language;
@@ -111,8 +111,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <div className="relative w-10 h-10 rounded-full overflow-hidden border border-slate-300 bg-white shadow-sm transition-transform duration-300 group-hover:scale-105 shrink-0">
             <img
-              src={mascotImg}
-              alt="Castorax Beaver Crest"
+              src={brandLogo}
+              alt="Castorax Tutoring Logo"
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />

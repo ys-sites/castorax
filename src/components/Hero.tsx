@@ -2,8 +2,6 @@ import React from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
 import { RiseUp } from './animations/RiseUp';
-import ParticleText from './animations/ParticleText';
-import FoldText from './animations/FoldText';
 import heroPhoto from '../assets/images/hero_tutoring_session.png';
 
 interface HeroProps {
@@ -18,10 +16,6 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenBooking,
 }) => {
   const t = translations[currentLang];
-
-  const titleText = currentLang === 'en'
-    ? 'Tutoring that builds confidence'
-    : 'Un tutorat qui bâtit la confiance';
 
   return (
     <section className="bg-gradient-to-b from-[#FAFAFC] via-[#F8FAFC] to-[#FFFFFF] text-[#011B4C] relative overflow-hidden border-b border-slate-200">
@@ -39,54 +33,26 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </RiseUp>
 
-            {/* ParticleText Animated Title (Same Fraunces Font!) */}
+            {/* Crisp High-Contrast Headline in Fraunces */}
             <RiseUp delay={0.2}>
-              <div className="space-y-2">
-                <div className="w-full h-[180px] sm:h-[200px] lg:h-[220px]">
-                  <ParticleText
-                    text={titleText}
-                    particleSize={2.2}
-                    density={3}
-                    color="#011B4C"
-                    highlightColor="#FBAD00"
-                    scatter={140}
-                    gatherDuration={1500}
-                    stagger={380}
-                    pointerRepel={45}
-                    repelRadius={110}
-                    idleDrift={0.8}
-                    trigger="hover"
-                    fontSize="clamp(2.2rem, 5vw, 3.8rem)"
-                    fontWeight={700}
-                    fontFamily="Fraunces, serif"
-                    glow
-                  />
-                </div>
-
-                <div className="text-xl sm:text-2xl font-display font-bold text-[#011B4C]">
-                  {currentLang === 'en' ? (
-                    <>in <span className="italic text-[#011B4C] underline decoration-[#FBAD00] decoration-2">Math</span>, <span className="italic text-[#011B4C] underline decoration-[#FBAD00] decoration-2">Science</span>, and <span className="italic text-[#011B4C] underline decoration-[#FBAD00] decoration-2">French</span>.</>
-                  ) : (
-                    <>en <span className="italic text-[#011B4C] underline decoration-[#FBAD00] decoration-2">maths</span>, <span className="italic text-[#011B4C] underline decoration-[#FBAD00] decoration-2">sciences</span> et <span className="italic text-[#011B4C] underline decoration-[#FBAD00] decoration-2">français</span>.</>
-                  )}
-                </div>
-              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-[#011B4C] leading-[1.12] tracking-tight">
+                {currentLang === 'en' ? (
+                  <>
+                    Tutoring that builds confidence — in <span className="italic text-[#011B4C]">Math</span>, <span className="italic text-[#011B4C]">Science</span>, and <span className="italic text-[#011B4C]">French</span>.
+                  </>
+                ) : (
+                  <>
+                    Un tutorat qui bâtit la confiance — en <span className="italic text-[#011B4C]">maths</span>, <span className="italic text-[#011B4C]">sciences</span> et <span className="italic text-[#011B4C]">français</span>.
+                  </>
+                )}
+              </h1>
             </RiseUp>
 
-            {/* Subtitle with FoldText Unfold Animation */}
+            {/* Subtitle */}
             <RiseUp delay={0.3}>
-              <div className="text-base sm:text-lg text-[#1E2A44] leading-relaxed max-w-2xl font-normal font-sans">
-                <FoldText
-                  text={t.hero.subtitle}
-                  splitBy="word"
-                  trigger="mount"
-                  duration={0.65}
-                  stagger={0.03}
-                  fontSize="1.125rem"
-                  fontWeight={400}
-                  color="#1E2A44"
-                />
-              </div>
+              <p className="text-base sm:text-lg text-[#1E2A44] leading-relaxed max-w-2xl font-normal font-sans">
+                {t.hero.subtitle}
+              </p>
             </RiseUp>
 
             {/* Action Buttons */}

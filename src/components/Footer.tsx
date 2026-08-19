@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
 import { Mail, Instagram, Clock, ArrowUp, MapPin } from 'lucide-react';
-import mascotImg from '../assets/images/castorax_mascot_logo_1786527601351.jpg';
+import brandLogo from '../assets/images/logo.jpeg';
 
 interface FooterProps {
   currentLang: Language;
@@ -35,7 +35,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full overflow-hidden border border-[#FBAD00] bg-white shrink-0">
                 <img
-                  src={mascotImg}
+                  src={brandLogo}
                   alt="Castorax Logo"
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
