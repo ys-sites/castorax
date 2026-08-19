@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
 import { RiseUp } from './animations/RiseUp';
+import FoldText from './animations/FoldText';
 import heroPhoto from '../assets/images/hero_tutoring_session.png';
 
 interface HeroProps {
@@ -48,11 +49,20 @@ export const Hero: React.FC<HeroProps> = ({
               </h1>
             </RiseUp>
 
-            {/* Subtitle */}
+            {/* Subtitle with FoldText animation */}
             <RiseUp delay={0.3}>
-              <p className="text-base sm:text-lg text-[#1E2A44] leading-relaxed max-w-2xl font-normal font-sans">
-                {t.hero.subtitle}
-              </p>
+              <div className="text-base sm:text-lg text-[#1E2A44] leading-relaxed max-w-2xl font-normal font-sans">
+                <FoldText
+                  text={t.hero.subtitle}
+                  splitBy="word"
+                  trigger="mount"
+                  duration={0.65}
+                  stagger={0.03}
+                  fontSize="1.125rem"
+                  fontWeight={400}
+                  color="#1E2A44"
+                />
+              </div>
             </RiseUp>
 
             {/* Action Buttons */}
