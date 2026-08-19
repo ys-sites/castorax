@@ -19,11 +19,11 @@ export const PricingView: React.FC<PricingViewProps> = ({
   const [activeTab, setActiveTab] = useState<'math' | 'french'>('math');
 
   return (
-    <div className="bg-[#FAF6EC] py-12 space-y-16">
+    <div className="bg-[#FAFAFC] py-12 space-y-16">
       
       {/* Header Banner */}
       <section className="text-center max-w-3xl mx-auto px-4 space-y-4">
-        <div className="inline-block px-3 py-1 rounded-md bg-[#F1E9D8] text-[#011B4C] text-xs font-mono font-bold uppercase tracking-wider border border-[#011B4C]/15">
+        <div className="inline-block px-3 py-1 rounded-md bg-[#011B4C]/5 text-[#011B4C] text-xs font-mono font-bold uppercase tracking-wider border border-[#011B4C]/10">
           {currentLang === 'en' ? 'TRANSPARENT RATES' : 'TARIFS TRANSPARENTS'}
         </div>
         <h1 className="text-3xl sm:text-5xl font-display font-bold text-[#011B4C] tracking-tight">
@@ -37,7 +37,7 @@ export const PricingView: React.FC<PricingViewProps> = ({
       {/* Program Selector Tabs */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center mb-10">
-          <div className="bg-[#F1E9D8] p-1.5 rounded-xl inline-flex gap-2 border border-[#011B4C]/15">
+          <div className="bg-slate-200/70 p-1.5 rounded-xl inline-flex gap-2 border border-slate-300/60">
             <button
               onClick={() => setActiveTab('math')}
               className={`px-6 py-3 rounded-lg text-sm font-bold transition-all cursor-pointer font-sans ${
@@ -66,8 +66,8 @@ export const PricingView: React.FC<PricingViewProps> = ({
           {(activeTab === 'math' ? t.pricing.mathPlans : t.pricing.frenchPlans).map((plan, idx) => (
             <div
               key={idx}
-              className={`bg-[#FAF6EC] rounded-2xl p-6 border shadow-sm flex flex-col justify-between hover:shadow-lg transition-all duration-300 relative ${
-                idx === 2 ? 'border-[#FBAD00] ring-2 ring-[#FBAD00]/40' : 'border-[#011B4C]/15'
+              className={`bg-[#FFFFFF] rounded-2xl p-6 border shadow-sm flex flex-col justify-between hover:shadow-lg transition-all duration-300 relative ${
+                idx === 2 ? 'border-[#FBAD00] ring-2 ring-[#FBAD00]/40' : 'border-slate-200'
               }`}
             >
               {idx === 2 && (
@@ -81,11 +81,11 @@ export const PricingView: React.FC<PricingViewProps> = ({
                 <div className="my-4">
                   <span className="text-3xl sm:text-4xl font-mono font-bold text-[#011B4C]">{plan.price}</span>
                 </div>
-                <div className="text-xs font-mono font-bold text-[#011B4C] bg-[#F1E9D8] px-3 py-1.5 rounded inline-block mb-6 border border-[#011B4C]/15">
+                <div className="text-xs font-mono font-bold text-[#011B4C] bg-slate-100 px-3 py-1.5 rounded inline-block mb-6 border border-slate-200">
                   {plan.perHour} ({plan.note})
                 </div>
 
-                <ul className="space-y-3 text-xs text-[#1E2A44] font-sans border-t border-[#011B4C]/15 pt-4 mb-6">
+                <ul className="space-y-3 text-xs text-[#1E2A44] font-sans border-t border-slate-100 pt-4 mb-6">
                   <li className="flex items-center gap-2">
                     <Check className="w-4 h-4 text-[#FBAD00] shrink-0" />
                     <span>{currentLang === 'en' ? '1-on-1 Online Tutoring' : 'Tutorat individuel en ligne'}</span>
@@ -120,14 +120,14 @@ export const PricingView: React.FC<PricingViewProps> = ({
 
       {/* Side-by-side Table Summary */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#F1E9D8] border border-[#011B4C]/15 rounded-2xl p-6 sm:p-8 shadow-sm overflow-x-auto">
+        <div className="bg-[#FFFFFF] border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm overflow-x-auto">
           <h2 className="text-xl font-display font-bold text-[#011B4C] mb-6 text-center">
             {currentLang === 'en' ? 'Complete Pricing Summary' : 'Aperçu complet des tarifs'}
           </h2>
 
           <table className="w-full text-left text-xs sm:text-sm border-collapse font-sans">
             <thead>
-              <tr className="border-b border-[#011B4C]/20 bg-[#011B4C] text-[#FBAD00]">
+              <tr className="border-b border-slate-200 bg-[#011B4C] text-[#FBAD00]">
                 <th className="p-3.5 font-bold">{currentLang === 'en' ? 'Program' : 'Programme'}</th>
                 <th className="p-3.5 font-mono font-bold">{currentLang === 'en' ? 'Pay-as-you-go' : 'À la carte'}</th>
                 <th className="p-3.5 font-mono font-bold">4 hrs / mo</th>
@@ -135,7 +135,7 @@ export const PricingView: React.FC<PricingViewProps> = ({
                 <th className="p-3.5 font-mono font-bold">12 hrs / mo</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#011B4C]/10 text-[#011B4C]">
+            <tbody className="divide-y divide-slate-100 text-[#011B4C]">
               <tr>
                 <td className="p-3.5 font-bold">Math & Science</td>
                 <td className="p-3.5 font-mono">$40 / hr</td>
@@ -163,8 +163,8 @@ export const PricingView: React.FC<PricingViewProps> = ({
 
       {/* Site-wide Closing Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="bg-[#011B4C] text-[#FAF6EC] border border-[#011B4C] p-8 sm:p-12 rounded-2xl shadow-xl space-y-6">
-          <h3 className="text-2xl sm:text-3xl font-display font-bold text-[#FAF6EC]">
+        <div className="bg-[#011B4C] text-[#FFFFFF] border border-[#011B4C] p-8 sm:p-12 rounded-2xl shadow-xl space-y-6">
+          <h3 className="text-2xl sm:text-3xl font-display font-bold text-[#FFFFFF]">
             {t.closingCta.title}
           </h3>
           <button

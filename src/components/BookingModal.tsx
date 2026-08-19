@@ -37,7 +37,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         particleCount: 70,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#011B4C', '#FBAD00', '#F1E9D8'],
+        colors: ['#011B4C', '#FBAD00', '#F8FAFC'],
       });
     } catch {
       // ignore
@@ -57,21 +57,21 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#011B4C]/75 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-[#FAF6EC] rounded-2xl shadow-2xl overflow-hidden border border-[#011B4C]/20">
+      <div className="relative w-full max-w-lg bg-[#FFFFFF] rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
         
         {/* Header */}
-        <div className="bg-[#011B4C] text-[#FAF6EC] p-6 relative border-b border-[#011B4C]">
+        <div className="bg-[#011B4C] text-[#FFFFFF] p-6 relative border-b border-[#011B4C]">
           <button
             onClick={resetAndClose}
-            className="absolute top-4 right-4 text-[#FAF6EC]/80 hover:text-white p-1.5 rounded-lg hover:bg-[#FAF6EC]/10 transition-colors cursor-pointer"
+            className="absolute top-4 right-4 text-white/80 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
           <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#FBAD00] mb-1">
             Castorax Tutoring
           </div>
-          <h3 className="text-xl font-display font-bold text-[#FAF6EC]">{t.bookingModal.title}</h3>
-          <p className="text-xs text-[#FAF6EC]/80 mt-1 flex items-center gap-1.5 font-sans">
+          <h3 className="text-xl font-display font-bold text-white">{t.bookingModal.title}</h3>
+          <p className="text-xs text-white/80 mt-1 flex items-center gap-1.5 font-sans">
             <Clock className="w-3.5 h-3.5 text-[#FBAD00]" />
             <span>{t.bookingModal.responseTimeNote}</span>
           </p>
@@ -94,7 +94,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               </p>
               
               {/* Direct links container */}
-              <div className="bg-[#F1E9D8] border border-[#011B4C]/15 p-4 rounded-xl text-xs space-y-2 text-[#011B4C]">
+              <div className="bg-[#F8FAFC] border border-slate-200 p-4 rounded-xl text-xs space-y-2 text-[#011B4C]">
                 <p className="font-bold">Direct Contact Options:</p>
                 <div className="flex flex-col gap-2">
                   <a
@@ -108,7 +108,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </a>
                   <button
                     onClick={handleCopyEmail}
-                    className="flex items-center justify-center gap-2 bg-[#011B4C] text-[#FAF6EC] font-bold py-2 px-4 rounded-lg cursor-pointer hover:bg-[#1E2A44]"
+                    className="flex items-center justify-center gap-2 bg-[#011B4C] text-[#FFFFFF] font-bold py-2 px-4 rounded-lg cursor-pointer hover:bg-[#1E2A44]"
                   >
                     {copied ? <Check className="w-4 h-4 text-[#FBAD00]" /> : <Copy className="w-4 h-4" />}
                     <span>{copied ? t.bookingModal.copiedNotice : t.bookingModal.copyEmail}</span>
@@ -118,7 +118,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               <button
                 onClick={resetAndClose}
-                className="w-full bg-[#011B4C] text-[#FAF6EC] font-bold py-3 rounded-lg hover:bg-[#1E2A44] transition-colors shadow cursor-pointer uppercase text-xs tracking-wider"
+                className="w-full bg-[#011B4C] text-[#FFFFFF] font-bold py-3 rounded-lg hover:bg-[#1E2A44] transition-colors shadow cursor-pointer uppercase text-xs tracking-wider"
               >
                 {currentLang === 'en' ? 'Close Window' : 'Fermer la fenêtre'}
               </button>
@@ -135,7 +135,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder={currentLang === 'en' ? 'e.g., Alex Johnson' : 'ex., Alex Johnson'}
-                  className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#F1E9D8] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                 />
               </div>
 
@@ -149,7 +149,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   placeholder="alex@example.com"
-                  className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#F1E9D8] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                 />
               </div>
 
@@ -160,7 +160,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <select
                   value={form.program}
                   onChange={(e) => setForm({ ...form, program: e.target.value as any })}
-                  className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#F1E9D8] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm font-medium"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm font-medium"
                 >
                   <option value="math">{t.bookingModal.programMath}</option>
                   <option value="french">{t.bookingModal.programFrench}</option>
@@ -178,7 +178,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   placeholder={currentLang === 'en' ? 'Tell me about your grade level, exam goals, or timeline...' : 'Parlez-moi de votre niveau, vos objectifs d\'examen ou échéances...'}
-                  className="w-full px-4 py-3 rounded-lg border border-[#011B4C]/20 bg-[#F1E9D8] text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
+                  className="w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-[#011B4C] focus:outline-none focus:border-[#011B4C] text-sm"
                 />
               </div>
 
@@ -192,7 +192,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 </button>
               </div>
 
-              <div className="flex items-center justify-between text-[11px] text-[#1E2A44]/80 pt-2 border-t border-[#011B4C]/15 font-mono">
+              <div className="flex items-center justify-between text-[11px] text-[#1E2A44]/80 pt-2 border-t border-slate-200 font-mono">
                 <button
                   type="button"
                   onClick={handleCopyEmail}

@@ -16,7 +16,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({ currentLang }) => {
   };
 
   return (
-    <section className="py-20 bg-[#FAF6EC] border-t border-[#011B4C]/10">
+    <section className="py-20 bg-[#FAFAFC] border-t border-slate-200/80">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Title */}
@@ -39,7 +39,7 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({ currentLang }) => {
             return (
               <div
                 key={idx}
-                className="bg-[#F1E9D8] rounded-xl overflow-hidden shadow-sm text-[#011B4C] transition-all duration-200 border border-[#011B4C]/15"
+                className="bg-[#FFFFFF] rounded-xl overflow-hidden shadow-sm text-[#011B4C] transition-all duration-200 border border-slate-200"
               >
                 <button
                   onClick={() => toggle(idx)}
@@ -47,14 +47,14 @@ export const FAQAccordion: React.FC<FAQAccordionProps> = ({ currentLang }) => {
                 >
                   <span className="font-display font-bold text-base sm:text-lg">{item.q}</span>
                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                    isOpen ? 'bg-[#011B4C] text-[#FBAD00]' : 'bg-[#FAF6EC] text-[#011B4C]'
+                    isOpen ? 'bg-[#011B4C] text-[#FBAD00]' : 'bg-[#F8FAFC] text-[#011B4C]'
                   }`}>
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="p-5 text-xs sm:text-sm text-[#1E2A44] leading-relaxed font-sans bg-[#FAF6EC] border-t border-[#011B4C]/15">
+                  <div className="p-5 text-xs sm:text-sm text-[#1E2A44] leading-relaxed font-sans bg-[#F8FAFC] border-t border-slate-200">
                     {item.a}
                   </div>
                 )}

@@ -24,16 +24,16 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-[#011B4C] text-[#FAF6EC] border-t-2 border-[#FBAD00] pt-16 pb-8">
+    <footer className="bg-[#011B4C] text-[#FFFFFF] border-t-2 border-[#FBAD00] pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 4 Main Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#FAF6EC]/15">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/15">
           
           {/* Col 1: Brand & Tagline */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full overflow-hidden border border-[#FBAD00] bg-[#FAF6EC] shrink-0">
+              <div className="w-8 h-8 rounded-full overflow-hidden border border-[#FBAD00] bg-white shrink-0">
                 <img
                   src={mascotImg}
                   alt="Castorax Logo"
@@ -42,16 +42,16 @@ export const Footer: React.FC<FooterProps> = ({
                 />
               </div>
               <div>
-                <h3 className="text-lg font-display font-bold text-[#FAF6EC]">{t.brand.name}</h3>
+                <h3 className="text-lg font-display font-bold text-white">{t.brand.name}</h3>
                 <p className="text-[10px] text-[#FBAD00] font-mono uppercase tracking-wider">
                   BUILD STRONG FOUNDATIONS
                 </p>
               </div>
             </div>
-            <p className="text-xs text-[#FAF6EC]/80 leading-relaxed font-sans">
+            <p className="text-xs text-white/80 leading-relaxed font-sans">
               {t.footer.tagline}
             </p>
-            <div className="inline-flex items-center gap-2 bg-[#FAF6EC]/5 border border-[#FAF6EC]/10 px-3 py-1.5 rounded text-xs text-[#FAF6EC]/90 font-sans">
+            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded text-xs text-white/90 font-sans">
               <Clock className="w-3.5 h-3.5 text-[#FBAD00]" />
               <span>{t.footer.reply}</span>
             </div>
@@ -62,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className="text-[#FBAD00] font-mono font-bold text-xs uppercase tracking-widest">
               QUICK LINKS
             </h4>
-            <ul className="space-y-2 text-xs text-[#FAF6EC]/80 font-sans">
+            <ul className="space-y-2 text-xs text-white/80 font-sans">
               <li>
                 <button
                   onClick={() => onNavigate('home')}
@@ -111,7 +111,7 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className="text-[#FBAD00] font-mono font-bold text-xs uppercase tracking-widest">
               TUTORING PROGRAMS
             </h4>
-            <ul className="space-y-2 text-xs text-[#FAF6EC]/80 font-sans">
+            <ul className="space-y-2 text-xs text-white/80 font-sans">
               <li>
                 <button
                   onClick={() => onNavigate('math')}
@@ -152,7 +152,7 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className="text-[#FBAD00] font-mono font-bold text-xs uppercase tracking-widest">
               CONTACT US
             </h4>
-            <div className="space-y-2 text-xs text-[#FAF6EC]/80">
+            <div className="space-y-2 text-xs text-white/80">
               <p className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#FBAD00] shrink-0" />
                 <span>100% Online · Canada & Global</span>
@@ -179,7 +179,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Legal & Language Bar */}
-        <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-[#FAF6EC]/60 gap-4 font-sans">
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-white/60 gap-4 font-sans">
           <p>© {new Date().getFullYear()} {t.brand.name}. {t.footer.rights}</p>
           
           <div className="flex items-center gap-4 text-[11px] font-mono">

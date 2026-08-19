@@ -8,9 +8,9 @@
   --color-ink: #011B4C;
   --color-ink-soft: #1E2A44;
   --color-gold: #FBAD00;
-  --color-paper: #FAF6EC;
-  --color-paper-deep: #F1E9D8;
-  --color-rule: rgba(1, 27, 76, 0.14);
+  --color-paper: #FFFFFF;
+  --color-paper-deep: #F8FAFC;
+  --color-rule: rgba(1, 27, 76, 0.1);
 }
 
 @layer utilities {
@@ -31,14 +31,14 @@
   --ink: #011B4C;
   --ink-soft: #1E2A44;
   --gold: #FBAD00;
-  --paper: #FAF6EC;
-  --paper-deep: #F1E9D8;
-  --rule: rgba(1, 27, 76, 0.14);
+  --paper: #FFFFFF;
+  --paper-deep: #F8FAFC;
+  --rule: rgba(1, 27, 76, 0.1);
 }
 
 body {
-  background-color: var(--paper);
-  color: var(--ink-soft);
+  background-color: #FAFAFC;
+  color: #1E2A44;
   font-family: 'Public Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -54,7 +54,7 @@ h1, h2, h3, h4, .font-heading {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F1E9D8;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
   background: #FBAD00;
@@ -63,6 +63,3 @@ h1, h2, h3, h4, .font-heading {
 ::-webkit-scrollbar-thumb:hover {
   background: #d49300;
 }
-
-
-

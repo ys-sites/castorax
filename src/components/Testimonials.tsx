@@ -13,12 +13,12 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
   const [showEnParentQuote, setShowEnParentQuote] = useState(false);
 
   return (
-    <section className="py-20 bg-[#FAF6EC] relative border-t border-[#011B4C]/10">
+    <section className="py-20 bg-[#FAFAFC] relative border-t border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#011B4C]/70 font-sans">
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#011B4C]/70">
             {testData.eyebrow}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#011B4C]">
@@ -32,11 +32,11 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
         {/* 2 Editorial Pull-Quote Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           
-          {/* Card 1: Zeeshan (French Track) */}
-          <div className="bg-[#F1E9D8] border border-[#011B4C]/15 rounded-2xl p-8 sm:p-10 shadow-sm flex flex-col justify-between space-y-6">
+          {/* Card 1: Zeeshan (French Track) - Crisp White Card */}
+          <div className="bg-[#FFFFFF] border border-slate-200 rounded-2xl p-8 sm:p-10 shadow-sm flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#011B4C] bg-[#011B4C]/10 px-3 py-1 rounded">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#011B4C] bg-[#011B4C]/5 px-3 py-1 rounded border border-[#011B4C]/10">
                   {testData.items[0].track}
                 </span>
                 <span className="text-4xl font-display italic text-[#011B4C]/30 leading-none">
@@ -49,7 +49,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
               </blockquote>
             </div>
 
-            <div className="pt-6 border-t border-[#011B4C]/15">
+            <div className="pt-6 border-t border-slate-200">
               <div className="font-display font-bold text-base text-[#011B4C]">
                 {testData.items[0].name}
               </div>
@@ -59,11 +59,11 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
             </div>
           </div>
 
-          {/* Card 2: Parent of Secondary 1 Student (Math Track) */}
-          <div className="bg-[#011B4C] text-[#FAF6EC] border border-[#011B4C] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between space-y-6">
+          {/* Card 2: Parent of Secondary 1 Student (Math Track) - Royal Navy Card */}
+          <div className="bg-[#011B4C] text-[#FFFFFF] border border-[#011B4C] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FBAD00] bg-[#FAF6EC]/10 px-3 py-1 rounded">
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FBAD00] bg-white/10 px-3 py-1 rounded">
                   {testData.items[1].track}
                 </span>
                 <span className="text-4xl font-display italic text-[#FBAD00]/40 leading-none">
@@ -72,7 +72,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
               </div>
 
               {/* Display French verbatim primary or EN translation */}
-              <blockquote className="text-sm sm:text-base font-display italic text-[#FAF6EC] leading-relaxed">
+              <blockquote className="text-sm sm:text-base font-display italic text-[#FFFFFF] leading-relaxed">
                 {showEnParentQuote
                   ? `"${testData.items[1].quote}"`
                   : (testData.items[1].quoteFrOriginal || testData.items[1].quote)}
@@ -89,11 +89,11 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
               </div>
             </div>
 
-            <div className="pt-6 border-t border-[#FAF6EC]/15">
-              <div className="font-display font-bold text-base text-[#FAF6EC]">
+            <div className="pt-6 border-t border-white/15">
+              <div className="font-display font-bold text-base text-[#FFFFFF]">
                 {testData.items[1].name}
               </div>
-              <div className="text-xs font-sans text-[#FAF6EC]/75">
+              <div className="text-xs font-sans text-white/80">
                 {testData.items[1].role}
               </div>
             </div>
