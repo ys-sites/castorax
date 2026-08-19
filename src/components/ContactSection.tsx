@@ -132,10 +132,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ currentLang }) =
                 </div>
                 <div>
                   <h3 className="text-xs font-mono font-bold text-[#011B4C] uppercase tracking-wider">Instagram Direct</h3>
-                  <p className="text-sm font-mono font-bold text-[#011B4C]">{t.brand.instagram}</p>
+                  <a
+                    href="https://www.instagram.com/castoraxtutoring/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm font-mono font-bold text-[#011B4C] hover:underline cursor-pointer block"
+                  >
+                    {t.brand.instagram}
+                  </a>
                 </div>
                 <a
-                  href="https://instagram.com/castoraxtutoring"
+                  href="https://www.instagram.com/castoraxtutoring/"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 shadow cursor-pointer text-center"

@@ -98,7 +98,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 <p className="font-bold">Direct Contact Options:</p>
                 <div className="flex flex-col gap-2">
                   <a
-                    href="https://instagram.com/castoraxtutoring"
+                    href="https://www.instagram.com/castoraxtutoring/"
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center justify-center gap-2 bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] font-bold py-2 px-4 rounded-lg shadow cursor-pointer text-center"
@@ -201,7 +201,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   {copied ? t.bookingModal.copiedNotice : t.bookingModal.copyEmail}
                 </button>
                 <a
-                  href="https://instagram.com/castoraxtutoring"
+                  href="https://www.instagram.com/castoraxtutoring/"
                   target="_blank"
                   rel="noreferrer"
                   className="hover:text-[#011B4C] underline font-bold cursor-pointer"

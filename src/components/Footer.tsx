@@ -161,10 +161,15 @@ export const Footer: React.FC<FooterProps> = ({
                 <Mail className="w-3.5 h-3.5 text-[#FBAD00] shrink-0" />
                 <span>{t.brand.email}</span>
               </p>
-              <p className="flex items-center gap-2 font-mono">
+              <a
+                href="https://www.instagram.com/castoraxtutoring/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 font-mono hover:text-[#FBAD00] transition-colors cursor-pointer"
+              >
                 <Instagram className="w-3.5 h-3.5 text-[#FBAD00] shrink-0" />
                 <span>{t.brand.instagram}</span>
-              </p>
+              </a>
               <div className="pt-2">
                 <button
                   onClick={onOpenBooking}
