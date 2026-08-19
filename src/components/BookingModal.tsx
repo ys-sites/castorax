@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { translations } from '../translations';
-import { X, Send, CheckCircle2, Clock, Instagram, Copy, Check } from 'lucide-react';
+import { X, Send, CheckCircle2, Clock, Instagram, Copy, Check, Loader2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface BookingModalProps {
@@ -19,6 +19,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 }) => {
   const t = translations[currentLang];
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState({
     name: '',
@@ -29,18 +30,48 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+
     try {
-      confetti({
-        particleCount: 70,
-        spread: 60,
-        origin: { y: 0.6 },
-        colors: ['#011B4C', '#FBAD00', '#F8FAFC'],
+      const response = await fetch(`https://formsubmit.co/ajax/${t.brand.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `New Session Booking Request from ${form.name}`,
+          _template: 'table',
+          _captcha: 'false',
+          Name: form.name,
+          Email: form.email,
+          Program: form.program,
+          Message: form.message,
+        }),
       });
-    } catch {
-      // ignore
+
+      if (response.ok) {
+        setSubmitted(true);
+        try {
+          confetti({
+            particleCount: 70,
+            spread: 60,
+            origin: { y: 0.6 },
+            colors: ['#011B4C', '#FBAD00', '#F8FAFC'],
+          });
+        } catch {
+          // ignore
+        }
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error('FormSubmit Error:', err);
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -185,10 +216,15 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="pt-2">
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-[#011B4C] hover:bg-[#1E2A44] text-[#FBAD00] font-bold py-3.5 rounded-lg shadow transition-all flex items-center justify-center gap-2 cursor-pointer text-xs uppercase tracking-wider"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>{t.bookingModal.sendEmailCTA || t.hero.cta}</span>
+                  {isSubmitting ? (
+                    <Loader2 className="w-4 h-4 animate-spin text-[#FBAD00]" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
+                  <span>{isSubmitting ? (currentLang === 'en' ? 'Sending...' : 'Envoi...') : (t.bookingModal.sendEmailCTA || t.hero.cta)}</span>
                 </button>
               </div>
 

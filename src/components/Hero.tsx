@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
+import { RiseUp } from './animations/RiseUp';
 import heroPhoto from '../assets/images/hero_tutoring_session.png';
 
 interface HeroProps {
@@ -25,68 +26,77 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="lg:col-span-6 space-y-6 text-left">
             
             {/* Eyebrow marker */}
-            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#011B4C] bg-[#011B4C]/5 border border-[#011B4C]/10 px-3.5 py-1 rounded-md">
-              <span className="w-2 h-2 rounded-full bg-[#FBAD00]" />
-              <span>{t.hero.eyebrow}</span>
-            </div>
+            <RiseUp delay={0.1}>
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-[#011B4C] bg-[#011B4C]/5 border border-[#011B4C]/10 px-3.5 py-1 rounded-md">
+                <span className="w-2 h-2 rounded-full bg-[#FBAD00]" />
+                <span>{t.hero.eyebrow}</span>
+              </div>
+            </RiseUp>
 
             {/* Main Headline in Fraunces */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-[#011B4C] leading-[1.12] tracking-tight">
-              {currentLang === 'en' ? (
-                <>
-                  Tutoring that builds confidence — in <span className="italic text-[#011B4C]">Math</span>, <span className="italic text-[#011B4C]">Science</span>, and <span className="italic text-[#011B4C]">French</span>.
-                </>
-              ) : (
-                <>
-                  Un tutorat qui bâtit la confiance — en <span className="italic text-[#011B4C]">maths</span>, <span className="italic text-[#011B4C]">sciences</span> et <span className="italic text-[#011B4C]">français</span>.
-                </>
-              )}
-            </h1>
+            <RiseUp delay={0.2}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-[#011B4C] leading-[1.12] tracking-tight">
+                {currentLang === 'en' ? (
+                  <>
+                    Tutoring that builds confidence — in <span className="italic text-[#011B4C]">Math</span>, <span className="italic text-[#011B4C]">Science</span>, and <span className="italic text-[#011B4C]">French</span>.
+                  </>
+                ) : (
+                  <>
+                    Un tutorat qui bâtit la confiance — en <span className="italic text-[#011B4C]">maths</span>, <span className="italic text-[#011B4C]">sciences</span> et <span className="italic text-[#011B4C]">français</span>.
+                  </>
+                )}
+              </h1>
+            </RiseUp>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[#1E2A44] leading-relaxed max-w-2xl font-normal font-sans">
-              {t.hero.subtitle}
-            </p>
+            <RiseUp delay={0.3}>
+              <p className="text-base sm:text-lg text-[#1E2A44] leading-relaxed max-w-2xl font-normal font-sans">
+                {t.hero.subtitle}
+              </p>
+            </RiseUp>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <button
-                onClick={onOpenBooking}
-                className="bg-[#011B4C] hover:bg-[#1E2A44] text-[#FFFFFF] font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-md transition-all cursor-pointer text-center font-sans"
-              >
-                {t.hero.cta}
-              </button>
+            <RiseUp delay={0.4}>
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <button
+                  onClick={onOpenBooking}
+                  className="bg-[#011B4C] hover:bg-[#1E2A44] text-[#FFFFFF] font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow-md transition-all cursor-pointer text-center font-sans hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  {t.hero.cta}
+                </button>
 
-              <button
-                onClick={() => onNavigate('pricing')}
-                className="bg-white hover:bg-slate-50 border border-slate-300 text-[#011B4C] font-bold text-sm uppercase tracking-wider px-7 py-4 rounded-xl transition-all cursor-pointer text-center shadow-sm font-sans"
-              >
-                {t.hero.secondaryCta}
-              </button>
-            </div>
+                <button
+                  onClick={() => onNavigate('pricing')}
+                  className="bg-white hover:bg-slate-50 border border-slate-300 text-[#011B4C] font-bold text-sm uppercase tracking-wider px-7 py-4 rounded-xl transition-all cursor-pointer text-center shadow-sm font-sans hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  {t.hero.secondaryCta}
+                </button>
+              </div>
+            </RiseUp>
 
             {/* Microcopy & Fast Response Guarantee */}
-            <div className="pt-2 flex items-center gap-2 text-xs text-[#1E2A44]/80 font-sans font-medium">
-              <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#FBAD00] shrink-0" />
-              <span>{t.hero.microcopy}</span>
-            </div>
+            <RiseUp delay={0.5}>
+              <div className="pt-2 flex items-center gap-2 text-xs text-[#1E2A44]/80 font-sans font-medium">
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#FBAD00] shrink-0" />
+                <span>{t.hero.microcopy}</span>
+              </div>
+            </RiseUp>
 
           </div>
 
-          {/* Right Column: Full Natural Ratio Image (Zero Blue Tint, Zero Overlay!) */}
+          {/* Right Column: Full Natural Ratio Image with RiseUp Animation */}
           <div className="lg:col-span-6 relative">
-            <div className="relative mx-auto w-full">
-              
-              {/* Full Aspect Ratio Image Container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white">
-                <img
-                  src={heroPhoto}
-                  alt="1-on-1 Online Tutoring Session"
-                  className="w-full h-auto object-contain transition-transform duration-500 hover:scale-[1.02]"
-                />
+            <RiseUp delay={0.3} yOffset={32}>
+              <div className="relative mx-auto w-full">
+                <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white">
+                  <img
+                    src={heroPhoto}
+                    alt="1-on-1 Online Tutoring Session"
+                    className="w-full h-auto object-contain transition-transform duration-500 hover:scale-[1.02]"
+                  />
+                </div>
               </div>
-
-            </div>
+            </RiseUp>
           </div>
 
         </div>

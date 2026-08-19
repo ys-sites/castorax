@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ActivePage, Language } from '../types';
 import { translations } from '../translations';
-import { Check, ShieldCheck } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { FoundationDivider } from './FoundationDivider';
+import { RiseUp, RiseUpStagger, RiseUpItem } from './animations/RiseUp';
 
 interface PricingViewProps {
   currentLang: Language;
@@ -12,170 +13,203 @@ interface PricingViewProps {
 
 export const PricingView: React.FC<PricingViewProps> = ({
   currentLang,
-  onNavigate,
   onOpenBooking,
 }) => {
   const t = translations[currentLang];
-  const [activeTab, setActiveTab] = useState<'math' | 'french'>('math');
+  const page = t.pricingPage;
+  const [currency, setCurrency] = useState<'cad' | 'usd'>('cad');
+
+  const rateMulti = currency === 'cad' ? 1 : 0.75;
+  const currencySymbol = currency === 'cad' ? 'CAD $' : 'USD $';
 
   return (
-    <div className="bg-[#FAFAFC] py-12 space-y-16">
-      
+    <div className="space-y-16 pb-20 bg-[#FAFAFC]">
       {/* Header Banner */}
-      <section className="text-center max-w-3xl mx-auto px-4 space-y-4">
-        <div className="inline-block px-3 py-1 rounded-md bg-[#011B4C]/5 text-[#011B4C] text-xs font-mono font-bold uppercase tracking-wider border border-[#011B4C]/10">
-          {currentLang === 'en' ? 'TRANSPARENT RATES' : 'TARIFS TRANSPARENTS'}
+      <section className="bg-[#011B4C] text-[#FFFFFF] py-16 px-4 sm:px-8 border-b-2 border-[#FBAD00]">
+        <div className="max-w-5xl mx-auto space-y-6 text-center">
+          <RiseUp delay={0.1}>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#FBAD00] bg-white/10 px-3.5 py-1.5 rounded-full inline-block">
+              {page.eyebrow}
+            </span>
+          </RiseUp>
+          <RiseUp delay={0.2}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-[#FFFFFF]">
+              {page.title}
+            </h1>
+          </RiseUp>
+          <RiseUp delay={0.3}>
+            <p className="text-base sm:text-lg text-white/90 max-w-3xl mx-auto font-sans">
+              {page.subtitle}
+            </p>
+          </RiseUp>
+
+          {/* Currency Switcher */}
+          <RiseUp delay={0.4}>
+            <div className="inline-flex items-center bg-white/10 p-1 rounded-xl border border-white/20 font-mono text-xs">
+              <button
+                onClick={() => setCurrency('cad')}
+                className={`px-4 py-2 rounded-lg font-bold transition-colors cursor-pointer ${
+                  currency === 'cad' ? 'bg-[#FBAD00] text-[#011B4C]' : 'text-white/80 hover:text-white'
+                }`}
+              >
+                🇨🇦 CAD ($)
+              </button>
+              <button
+                onClick={() => setCurrency('usd')}
+                className={`px-4 py-2 rounded-lg font-bold transition-colors cursor-pointer ${
+                  currency === 'usd' ? 'bg-[#FBAD00] text-[#011B4C]' : 'text-white/80 hover:text-white'
+                }`}
+              >
+                🇺🇸 USD ($)
+              </button>
+            </div>
+          </RiseUp>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-display font-bold text-[#011B4C] tracking-tight">
-          {t.pricing.title}
-        </h1>
-        <p className="text-base sm:text-lg text-[#1E2A44] font-sans">
-          {t.pricing.subtitle}
-        </p>
       </section>
 
-      {/* Program Selector Tabs */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center mb-10">
-          <div className="bg-slate-200/70 p-1.5 rounded-xl inline-flex gap-2 border border-slate-300/60">
-            <button
-              onClick={() => setActiveTab('math')}
-              className={`px-6 py-3 rounded-lg text-sm font-bold transition-all cursor-pointer font-sans ${
-                activeTab === 'math'
-                  ? 'bg-[#011B4C] text-[#FBAD00] shadow'
-                  : 'text-[#011B4C] hover:text-[#011B4C]/80'
-              }`}
-            >
-              {t.pricing.mathTitle}
-            </button>
-            <button
-              onClick={() => setActiveTab('french')}
-              className={`px-6 py-3 rounded-lg text-sm font-bold transition-all cursor-pointer font-sans ${
-                activeTab === 'french'
-                  ? 'bg-[#011B4C] text-[#FBAD00] shadow'
-                  : 'text-[#011B4C] hover:text-[#011B4C]/80'
-              }`}
-            >
-              {t.pricing.frenchTitle}
-            </button>
-          </div>
-        </div>
-
-        {/* Pricing Tiers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {(activeTab === 'math' ? t.pricing.mathPlans : t.pricing.frenchPlans).map((plan, idx) => (
-            <div
-              key={idx}
-              className={`bg-[#FFFFFF] rounded-2xl p-6 border shadow-sm flex flex-col justify-between hover:shadow-lg transition-all duration-300 relative ${
-                idx === 2 ? 'border-[#FBAD00] ring-2 ring-[#FBAD00]/40' : 'border-slate-200'
-              }`}
-            >
-              {idx === 2 && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#011B4C] text-[#FBAD00] text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-0.5 rounded shadow border border-[#FBAD00]">
-                  Most Popular
-                </div>
-              )}
-
-              <div>
-                <h3 className="text-base font-display font-bold text-[#011B4C] mb-1">{plan.hours}</h3>
-                <div className="my-4">
-                  <span className="text-3xl sm:text-4xl font-mono font-bold text-[#011B4C]">{plan.price}</span>
-                </div>
-                <div className="text-xs font-mono font-bold text-[#011B4C] bg-slate-100 px-3 py-1.5 rounded inline-block mb-6 border border-slate-200">
-                  {plan.perHour} ({plan.note})
+      {/* 2 Main Pricing Cards */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <RiseUpStagger staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          
+          {/* Math & Science Card */}
+          <RiseUpItem className="h-full">
+            <div className="bg-[#FFFFFF] border border-slate-200 rounded-2xl p-8 sm:p-10 shadow-lg space-y-6 flex flex-col justify-between h-full hover:shadow-xl transition-all hover:-translate-y-1">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#011B4C] bg-[#011B4C]/5 px-3 py-1 rounded">
+                    MATH & SCIENCE
+                  </span>
+                  <span className="text-xs font-mono font-bold text-slate-500">1-ON-1 ONLINE</span>
                 </div>
 
-                <ul className="space-y-3 text-xs text-[#1E2A44] font-sans border-t border-slate-100 pt-4 mb-6">
-                  <li className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-[#FBAD00] shrink-0" />
-                    <span>{currentLang === 'en' ? '1-on-1 Online Tutoring' : 'Tutorat individuel en ligne'}</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-[#FBAD00] shrink-0" />
-                    <span>{currentLang === 'en' ? 'Support Between Sessions' : 'Soutien entre les séances'}</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-[#FBAD00] shrink-0" />
-                    <span>{currentLang === 'en' ? 'Flexible Scheduling' : 'Horaire flexible'}</span>
-                  </li>
+                <div>
+                  <h3 className="text-3xl font-display font-bold text-[#011B4C]">STEM Tutoring</h3>
+                  <div className="mt-2 flex items-baseline gap-1">
+                    <span className="text-4xl sm:text-5xl font-mono font-bold text-[#011B4C]">
+                      {currencySymbol}{Math.round(40 * rateMulti)}
+                    </span>
+                    <span className="text-sm font-sans text-slate-500 font-medium">/ hour</span>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-[#1E2A44] leading-relaxed font-sans">
+                  Comprehensive 1-on-1 sessions for High School, AP, Calculus, Physics, Chemistry, and Middle School Math.
+                </p>
+
+                <ul className="space-y-3 pt-2">
+                  {[
+                    "1-on-1 personalized digital whiteboard lessons",
+                    "Customized homework & exam preparation plans",
+                    "Direct Q&A support between sessions",
+                    "Flexible scheduling with 24-hour response",
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2.5 text-xs font-medium text-[#011B4C]">
+                      <Check className="w-4 h-4 text-[#FBAD00] shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              <button
-                onClick={onOpenBooking}
-                className="w-full bg-[#011B4C] hover:bg-[#1E2A44] text-[#FBAD00] font-bold py-3 rounded-xl shadow transition-all text-xs uppercase tracking-wider cursor-pointer"
-              >
-                {t.pricing.selectPlanCTA}
-              </button>
+              <div className="pt-4 border-t border-slate-200">
+                <button
+                  onClick={onOpenBooking}
+                  className="w-full bg-[#011B4C] hover:bg-[#1E2A44] text-[#FBAD00] font-bold text-xs uppercase tracking-wider py-4 rounded-xl shadow cursor-pointer transition-transform hover:scale-105 flex items-center justify-center gap-2"
+                >
+                  <span>Book STEM Session</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
-          ))}
-        </div>
+          </RiseUpItem>
 
-        {/* Fine Print Notice */}
-        <div className="mt-8 text-center text-xs font-sans text-[#1E2A44]/80 flex items-center justify-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-[#011B4C]" />
-          <span>{t.pricing.finePrint}</span>
-        </div>
+          {/* French Language & TEF/TCF Card (Featured) */}
+          <RiseUpItem className="h-full">
+            <div className="bg-[#011B4C] text-[#FFFFFF] border-2 border-[#FBAD00] rounded-2xl p-8 sm:p-10 shadow-xl space-y-6 flex flex-col justify-between h-full hover:shadow-2xl transition-all hover:-translate-y-1 relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-[#FBAD00] text-[#011B4C] font-mono font-bold text-[10px] uppercase tracking-wider px-4 py-1 rounded-bl-xl">
+                MOST POPULAR
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#FBAD00] bg-white/10 px-3 py-1 rounded">
+                    FRENCH & IMMIGRATION
+                  </span>
+                  <span className="text-xs font-mono font-bold text-white/70">1-ON-1 ONLINE</span>
+                </div>
+
+                <div>
+                  <h3 className="text-3xl font-display font-bold text-white">French Language & TEF/TCF</h3>
+                  <div className="mt-2 flex items-baseline gap-1">
+                    <span className="text-4xl sm:text-5xl font-mono font-bold text-[#FBAD00]">
+                      {currencySymbol}{Math.round(45 * rateMulti)}
+                    </span>
+                    <span className="text-sm font-sans text-white/70 font-medium">/ hour</span>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-white/85 leading-relaxed font-sans">
+                  Structured French instruction from beginner fundamentals to advanced TEF/TCF Canada exam preparation.
+                </p>
+
+                <ul className="space-y-3 pt-2">
+                  {[
+                    "Conversational fluency & grammar mastery",
+                    "TEF / TCF Canada exam target scoring strategies",
+                    "Pronunciation & listening comprehension drills",
+                    "Direct feedback & support between sessions",
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2.5 text-xs font-medium text-white">
+                      <Check className="w-4 h-4 text-[#FBAD00] shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-4 border-t border-white/15">
+                <button
+                  onClick={onOpenBooking}
+                  className="w-full bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] font-bold text-xs uppercase tracking-wider py-4 rounded-xl shadow cursor-pointer transition-transform hover:scale-105 flex items-center justify-center gap-2"
+                >
+                  <span>Book French Session</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </RiseUpItem>
+
+        </RiseUpStagger>
       </section>
 
-      {/* Side-by-side Table Summary */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FFFFFF] border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm overflow-x-auto">
-          <h2 className="text-xl font-display font-bold text-[#011B4C] mb-6 text-center">
-            {currentLang === 'en' ? 'Complete Pricing Summary' : 'Aperçu complet des tarifs'}
-          </h2>
-
-          <table className="w-full text-left text-xs sm:text-sm border-collapse font-sans">
-            <thead>
-              <tr className="border-b border-slate-200 bg-[#011B4C] text-[#FBAD00]">
-                <th className="p-3.5 font-bold">{currentLang === 'en' ? 'Program' : 'Programme'}</th>
-                <th className="p-3.5 font-mono font-bold">{currentLang === 'en' ? 'Pay-as-you-go' : 'À la carte'}</th>
-                <th className="p-3.5 font-mono font-bold">4 hrs / mo</th>
-                <th className="p-3.5 font-mono font-bold">8 hrs / mo</th>
-                <th className="p-3.5 font-mono font-bold">12 hrs / mo</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 text-[#011B4C]">
-              <tr>
-                <td className="p-3.5 font-bold">Math & Science</td>
-                <td className="p-3.5 font-mono">$40 / hr</td>
-                <td className="p-3.5 font-mono">$160/mo ($40/hr)</td>
-                <td className="p-3.5 font-mono font-bold">$300/mo ($37.50/hr)</td>
-                <td className="p-3.5 font-mono font-bold">$420/mo ($35/hr)</td>
-              </tr>
-              <tr>
-                <td className="p-3.5 font-bold">French & TEF/TCF Prep</td>
-                <td className="p-3.5 font-mono">$45 / hr</td>
-                <td className="p-3.5 font-mono">$180/mo ($45/hr)</td>
-                <td className="p-3.5 font-mono font-bold">$336/mo ($42/hr)</td>
-                <td className="p-3.5 font-mono font-bold">$480/mo ($40/hr)</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p className="text-center text-xs text-[#1E2A44]/75 mt-4 italic font-sans">
-            * {t.pricing.finePrint}
-          </p>
-        </div>
-
-        <FoundationDivider className="mt-12" />
+      {/* Summary Table */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <RiseUp className="bg-[#FFFFFF] border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4 font-sans">
+          <h3 className="text-lg font-display font-bold text-[#011B4C]">Rate Summary</h3>
+          <div className="divide-y divide-slate-200 text-xs text-[#011B4C]">
+            <div className="py-3 flex justify-between font-mono font-bold">
+              <span>PROGRAM / SUBJECT</span>
+              <span>RATE (PER HOUR)</span>
+            </div>
+            <div className="py-3 flex justify-between">
+              <span>Math & Science Tutoring</span>
+              <span className="font-mono font-bold">{currencySymbol}{Math.round(40 * rateMulti)} / hr</span>
+            </div>
+            <div className="py-3 flex justify-between">
+              <span>French Language & TEF / TCF Prep</span>
+              <span className="font-mono font-bold">{currencySymbol}{Math.round(45 * rateMulti)} / hr</span>
+            </div>
+            <div className="py-3 flex justify-between text-slate-500">
+              <span>Support between sessions (Q&A via email/DM)</span>
+              <span className="font-mono font-bold text-[#011B4C]">Included Free</span>
+            </div>
+          </div>
+        </RiseUp>
       </section>
 
-      {/* Site-wide Closing Banner */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="bg-[#011B4C] text-[#FFFFFF] border border-[#011B4C] p-8 sm:p-12 rounded-2xl shadow-xl space-y-6">
-          <h3 className="text-2xl sm:text-3xl font-display font-bold text-[#FFFFFF]">
-            {t.closingCta.title}
-          </h3>
-          <button
-            onClick={onOpenBooking}
-            className="bg-[#FBAD00] hover:bg-[#d49300] text-[#011B4C] font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl shadow transition-all cursor-pointer"
-          >
-            {t.closingCta.button}
-          </button>
-        </div>
-      </section>
-
+      <RiseUp delay={0.2}>
+        <FoundationDivider align="center" />
+      </RiseUp>
     </div>
   );
 };
