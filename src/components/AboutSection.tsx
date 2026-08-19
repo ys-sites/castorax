@@ -4,6 +4,8 @@ import { translations } from '../translations';
 import { FoundationDivider } from './FoundationDivider';
 import { Instagram } from 'lucide-react';
 import { RiseUp, RiseUpStagger, RiseUpItem } from './animations/RiseUp';
+import StrokeText from './animations/StrokeText';
+import FoldText from './animations/FoldText';
 import founderPhoto from '../assets/images/founder_tutor_portrait.png';
 
 interface AboutSectionProps {
@@ -64,19 +66,44 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           {/* Right: Founder Story & Pitch */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <RiseUp delay={0.1}>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#011B4C]/70 bg-[#011B4C]/5 px-3 py-1 rounded-md border border-[#011B4C]/10 w-fit block">
                   {founder.eyebrow}
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#011B4C]">
-                  {founder.title}
-                </h2>
+
+                {/* StrokeText Animated Title for "Hi, I'm Burhan." maintaining theme colors */}
+                <div className="w-full max-w-lg">
+                  <StrokeText
+                    text={founder.title}
+                    strokeColor="#FBAD00"
+                    fillColor="#011B4C"
+                    strokeWidth={1.8}
+                    drawDuration={1.5}
+                    fillDelay={0.2}
+                    stagger={0.06}
+                    ease="power2.out"
+                    trigger="scroll"
+                    fillMode="wipe"
+                    fontSize={56}
+                    fontWeight={800}
+                    letterSpacing={-2}
+                  />
+                </div>
               </div>
             </RiseUp>
 
             <RiseUp delay={0.2}>
               <p className="text-base text-[#1E2A44] leading-relaxed font-sans">
-                {founder.desc}
+                <FoldText
+                  text={founder.desc}
+                  splitBy="word"
+                  trigger="scroll"
+                  duration={0.6}
+                  stagger={0.03}
+                  fontSize="1rem"
+                  fontWeight={400}
+                  color="#1E2A44"
+                />
               </p>
             </RiseUp>
 
@@ -153,7 +180,16 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                       {step.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-[#1E2A44] leading-relaxed font-sans">
-                      {step.desc}
+                      <FoldText
+                        text={step.desc}
+                        splitBy="word"
+                        trigger="scroll"
+                        duration={0.5}
+                        stagger={0.02}
+                        fontSize="0.875rem"
+                        fontWeight={400}
+                        color="#1E2A44"
+                      />
                     </p>
                   </div>
                 </div>
